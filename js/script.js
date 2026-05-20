@@ -184,3 +184,35 @@ function renderQuestion() {
 
   showScreen("question");
 }
+
+/* Tjekker om brugeren har svaret rigtigt eller forkert */
+function handleAnswer(selectedIndex) {
+  const currentQuestion = questions[currentQuestionIndex];
+  const correctIndex = currentQuestion.correctIndex;
+
+  if (selectedIndex === correctIndex) {
+    score++;
+    feedbackTitle.textContent = "Korrekt!";
+  } else {
+    feedbackTitle.textContent = "Forkert!";
+  }
+
+  feedbackText.textContent = currentQuestion.feedback;
+  correctAnswerText.textContent = `Rigtigt svar: ${currentQuestion.answers[correctIndex]}`;
+  feedbackImage.src = currentQuestion.image;
+
+  showScreen("feedback");
+}
+
+/* Går videre til næste spørgsmål eller viser scoreboard */
+function nextQuestion() {
+  currentQuestionIndex++;
+
+  if (currentQuestionIndex < questions.length) {
+    renderQuestion();
+  } else {
+    saveScore();
+    renderScoreboard();
+    showScreen("score");
+  }
+}

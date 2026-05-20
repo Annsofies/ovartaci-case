@@ -130,3 +130,17 @@ const feedbackProgressBar = document.querySelector("#feedbackProgressBar");
 
 const finalScore = document.querySelector("#finalScore");
 const scoreList = document.querySelector("#scoreList");
+
+/* Variabler der holder styr på quizzen */
+let currentQuestionIndex = 0;
+let score = 0;
+let playerName = "";
+
+/* Viser kun den skærm, som brugeren skal se */
+function showScreen(screenName) {
+  Object.values(screens).forEach((screen) => {
+    screen.classList.remove("active");
+  });
+
+  screens[screenName].classList.add("active");
+}

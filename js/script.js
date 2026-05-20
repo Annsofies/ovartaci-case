@@ -86,3 +86,13 @@ const questions = [
 ];
 
 
+/* Finder de forskellige sider i HTML */
+const screens = {
+  start: document.querySelector("#startScreen"),
+  alias: document.querySelector("#aliasScreen"),
+  question: document.querySelector("#questionScreen"),
+  feedback: document.querySelector("#feedbackScreen"),
+  score: document.querySelector("#scoreScreen")
+};
+
+

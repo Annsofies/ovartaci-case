@@ -11,7 +11,7 @@
 
     <!-- Startside med overskrift og startknap -->
     <main id="quiz" class="quiz">
-        <section id="startside" class="forside active">
+        <section id="startScreen" class="hero-screen active">
             <div class="hero-card">
                 <h1>Hvor godt kender du Ovataci?</h1>
                 <p>Test din viden om Ovataci og se, hvor meget du virkelig ved! Se din samlede score efter og dyst mod andre.</p>
@@ -19,6 +19,16 @@
             </div>
         </section>
 
+    <!-- Side hvor bruger skriver alias -->
+    <section id="aliasSide" class="alias-side">
+        <div class="alias-card">
+            <h2 id="nameTitle">Indtast dit navn</h2>
+            <p>Dette navn vil blive brugt til at se din placering på scoreboardet.</p>
+            <input id="nameInput" type="text" maxlength="20" placeholder="Skriv dit navn her" autocomplete="off"/>
+            <p id="nameError" class="error"></p>
+            <button class="start-btn" id="saveNameBtn">Start Quiz</button>
+        </div>
+    </section>
 
 
 

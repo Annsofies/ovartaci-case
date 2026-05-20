@@ -216,3 +216,18 @@ function nextQuestion() {
     showScreen("score");
   }
 }
+
+/* Gemmer brugerens score i localStorage */
+function saveScore() {
+  const scores = JSON.parse(localStorage.getItem("ovartaciScores")) || [];
+
+  scores.push({
+    name: playerName,
+    score: score,
+    total: questions.length,
+  });
+
+  scores.sort((a, b) => b.score - a.score);
+
+  localStorage.setItem("ovartaciScores", JSON.stringify(scores));
+}

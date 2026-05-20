@@ -147,8 +147,7 @@ function showScreen(screenName) {
 
 /* Opdaterer progressbar og viser hvilket spørgsmål brugeren er på */
 function updateProgress() {
-
-  let progress = (currentQuestionIndex + 1) / questions.length * 100;
+  let progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   progressBar.style.width = progress + "%";
   feedbackProgressBar.style.width = progress + "%";
@@ -159,3 +158,29 @@ function updateProgress() {
   feedbackCounter.textContent = `Spørgsmål ${questionNumber} af ${questions.length}`;
 }
 
+/* Viser spørgsmål, billede og svarmuligheder */
+function renderQuestion() {
+  let currentQuestion = questions[currentQuestionIndex];
+
+  updateProgress();
+
+  questionText.textContent = currentQuestion.question;
+  questionImage.src = currentQuestion.image;
+
+  answers.innerHTML = "";
+
+  currentQuestion.answers.forEach(function (answer, index) {
+    let button = document.createElement("button");
+
+    button.textContent = answer;
+    button.classList.add("answer-btn");
+
+    button.onclick = function () {
+      handleAnswer(index);
+    };
+
+    answers.appendChild(button);
+  });
+
+  showScreen("question");
+}

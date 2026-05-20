@@ -89,7 +89,7 @@ const questions = [
       "At man selv deltager aktivt",
     ],
     correctIndex: 2,
-        image: "img/ovi.png",
+    image: "img/ovi.png",
     feedback:
       "Når brugeren deltager aktivt, bliver formidlingen mere involverende og engagerende.",
   },
@@ -104,3 +104,29 @@ const screens = {
   score: document.querySelector("#scoreScreen"),
 };
 
+/* Finder knapper og elementer fra HTML */
+const startBtn = document.querySelector("#start-btn");
+const saveNameBtn = document.querySelector("#saveNameBtn");
+const nextBtn = document.querySelector("#nextBtn");
+const restartBtn = document.querySelector("#restartBtn");
+
+const nameInput = document.querySelector("#nameInput");
+const nameError = document.querySelector("#nameError");
+
+const questionCounter = document.querySelector("#questionCounter");
+const questionTitle = document.querySelector("#questionTitle");
+const questionText = document.querySelector("#questionText");
+const questionImage = document.querySelector("#questionImage");
+const answers = document.querySelector("#answers");
+
+const feedbackCounter = document.querySelector("#feedbackCounter");
+const feedbackTitle = document.querySelector("#feedbackTitle");
+const feedbackText = document.querySelector("#feedbackText");
+const correctAnswerText = document.querySelector("#correctAnswerText");
+const feedbackImage = document.querySelector("#feedbackImage");
+
+const progressBar = document.querySelector("#progressBar");
+const feedbackProgressBar = document.querySelector("#feedbackProgressBar");
+
+const finalScore = document.querySelector("#finalScore");
+const scoreList = document.querySelector("#scoreList");

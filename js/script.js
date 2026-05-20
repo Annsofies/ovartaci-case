@@ -144,3 +144,18 @@ function showScreen(screenName) {
 
   screens[screenName].classList.add("active");
 }
+
+/* Opdaterer progressbar og viser hvilket spørgsmål brugeren er på */
+function updateProgress() {
+
+  let progress = (currentQuestionIndex + 1) / questions.length * 100;
+
+  progressBar.style.width = progress + "%";
+  feedbackProgressBar.style.width = progress + "%";
+
+  let questionNumber = currentQuestionIndex + 1;
+
+  questionCounter.textContent = `Spørgsmål ${questionNumber} af ${questions.length}`;
+  feedbackCounter.textContent = `Spørgsmål ${questionNumber} af ${questions.length}`;
+}
+

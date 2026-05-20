@@ -19,16 +19,37 @@
             </div>
         </section>
 
-    <!-- Side hvor bruger skriver alias -->
-    <section id="aliasSide" class="alias-side">
-        <div class="alias-card">
-            <h2 id="nameTitle">Indtast dit navn</h2>
-            <p>Dette navn vil blive brugt til at se din placering på scoreboardet.</p>
-            <input id="nameInput" type="text" maxlength="20" placeholder="Skriv dit navn her" autocomplete="off"/>
-            <p id="nameError" class="error"></p>
-            <button class="start-btn" id="saveNameBtn">Start Quiz</button>
-        </div>
-    </section>
+        <!-- Side hvor bruger skriver alias -->
+        <section id="aliasScreen" class="alias-screen">
+            <div class="alias-card">
+                <h2 id="nameTitle">Indtast dit navn</h2>
+                <p>Dette navn vil blive brugt til at se din placering på scoreboardet.</p>
+                <input id="nameInput" type="text" maxlength="20" placeholder="Skriv dit navn her" autocomplete="off"/>
+                <p id="nameError" class="error"></p>
+                <button class="start-btn" id="saveNameBtn">Start Quiz</button>
+            </div>
+        </section>
+
+        <!-- Spørgsmålsider -->
+         <section id="questionScreen" class="question-screen">
+            <header class="topbar">
+                <div class="progress-container"></div>
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+                <p id="questionCounter">Spørgsmål 1 af 10</p>
+            </header>
+
+            <div class="quiz-layout">
+                <figure class="image-container">
+                    <img id="questionImage" src="" alt="Billede releteret til spørgsmål" />
+                </figure>
+                <article class="question-container">
+                    <h2 id="questionTitle">Spørgsmål</h2>
+                    <p id="questionText"></p>
+                    <div id="answers" class="answers"></div>
+                </article>
+            </div>
+         </section>
 
 
 

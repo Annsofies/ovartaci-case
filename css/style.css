@@ -1,0 +1,9 @@
+/* Skjuler alle sections */
+section {
+  display: none;
+}
+
+/* Viser kun den aktive section */
+section.active {
+  display: block;
+}

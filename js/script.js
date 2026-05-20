@@ -231,3 +231,61 @@ function saveScore() {
 
   localStorage.setItem("ovartaciScores", JSON.stringify(scores));
 }
+
+/* Viser scoreboardet */
+function renderScoreboard() {
+  const scores = JSON.parse(localStorage.getItem("ovartaciScores")) || [];
+
+  finalScore.textContent = `${playerName}, du fik ${score} ud af ${questions.length} rigtige.`;
+
+  scoreList.innerHTML = "";
+
+  scores.forEach((entry) => {
+    const li = document.createElement("li");
+    li.textContent = `${entry.name}: ${entry.score}/${entry.total}`;
+    scoreList.appendChild(li);
+  });
+}
+
+/* Starter quizzen forfra */
+function startQuiz() {
+  currentQuestionIndex = 0;
+  score = 0;
+  renderQuestion();
+}
+
+/* Når brugeren klikker på startknappen */
+startBtn.addEventListener("click", () => {
+  showScreen("alias");
+  nameInput.focus();
+});
+
+/* Gemmer navnet og starter quizzen */
+saveNameBtn.addEventListener("click", () => {
+  const name = nameInput.value.trim();
+
+  if (name.length < 2) {
+    nameError.textContent = "Skriv mindst 2 tegn.";
+    return;
+  }
+
+  nameError.textContent = "";
+  playerName = name;
+
+  startQuiz();
+});
+
+/* Gør det muligt at trykke Enter efter navn */
+nameInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    saveNameBtn.click();
+  }
+});
+
+/* Knap til næste spørgsmål */
+nextBtn.addEventListener("click", nextQuestion);
+
+/* Knap til at starte quizzen igen */
+restartBtn.addEventListener("click", () => {
+  showScreen("alias");
+});

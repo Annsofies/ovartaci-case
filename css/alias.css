@@ -1,0 +1,186 @@
+/*/////  BAGGRUNDSBILLEDE + FÅR SKÆRMEN TIL AT FYLDE DET HELE  /////*/
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: url("/img/navnside.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/*/////  GLOBAL RESET: FJERNER BROWSERENS STANDARD MARGIN/PADDING, OG GØR STØRELSEER LETTERE AT STYLE MED  /////*/
+* {
+  margin: 0; /* margin: 0; (→ fjerner standard luft udenfor elementer) */
+  padding: 0; /* padding: 0; (→ fjerner standard luft indeni elementer) */
+  box-sizing: border-box; /* box-sizing: border-box; (→ padding tælles med i width/height) */
+}
+
+/*/////  BODY  ///// */
+body {
+  margin: 10px;
+  font-family: Arial, Arial, Helvetica, sans-serif;
+  height: 100vh;
+
+  overflow: hidden; /* fjerner scrollbars  */
+}
+
+/*/////  HOVED-CONTAINER: Holder titel + input område  /////*/
+.container {
+  height: calc(100vh - 33vh); /* skærmhøjde minus keyboard */
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*/////  PLACERING AF INPUT BOX  /////*/
+#inputBox {
+  position: fixed;
+  top: 200px;
+  left: 50%;
+
+  transform: translateX(
+    -50%
+  ); /* flytter elementet tilbage med 50% af sin egen bredde, bruges ofte sammen med left:50% for perfekt centrering */
+
+  width: 90%;
+  display: flex;
+}
+
+/*/////  OVERSKRIFT  /////*/
+h1 {
+  text-align: center;
+  font-size: 56px;
+  margin: 20px 0 5px 0; /* top højre bund venstre */
+  font-weight: bold;
+}
+
+/*/////  UNDERTEKST / BESKRIVELSE AF INPUTFELTET  /////*/
+.subtitle {
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  max-width: 800px; /* maks bredde for bedre læsbarhed */
+  margin: 0px auto 10px auto; /* top højre bund venstre */
+}
+
+/*/////  INPUTFELT: Der hvor spilleren skriver navn  ///// */
+#nameInput {
+  width: 100%;
+
+  height: 70px;
+
+  font-size: 32px;
+
+  text-align: center;
+
+  margin-bottom: 40px;
+
+  border-radius: 10px;
+
+  border: 2px solid #ccc;
+}
+
+/*/////  KEYBOARD CONTAINER (Selve tastaturet)  /////*/
+.keyboard {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100vw; /* fylder hele bredden */
+  height: 33vh; /* fylder 1/3 af skærmen */
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: stretch;
+
+  gap: 12px; /* luft mellem rækker */
+
+  padding: 10px;
+  margin-bottom: 30px;
+
+  z-index: 1; /* ligger over baggrunden */
+}
+
+/*/////  HVID BAGGRUND BAG KEYBOARD  /////*/
+.keyboard-area {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+
+  width: 100vw;
+  height: calc(40vh + 10px); /* baggrundsområde bag keyboard */
+
+  background: rgb(255, 255, 255);
+
+  z-index: 0; /* ligger bag keyboard */
+}
+
+/*/////  EN RÆKKE I KEYBOARD  /////*/
+.row {
+  display: flex;
+
+  width: 100%;
+
+  gap: 10px; /* luft mellem knapper */
+}
+
+/*/////  KNAP DESIGN  /////*/
+button {
+  flex: 1; /* alle knapper fylder lige meget */
+
+  height: 60px;
+
+  font-size: 28px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #e0e0e0;
+
+  touch-action: manipulation; /* bedre touch på mobil */
+}
+
+/*/////  SPECIALKNAPPER: Gør nogle knapper bredere  /////*/
+#space {
+  flex: 5;
+}
+
+#shift,
+#backspace {
+  flex: 2;
+}
+
+#leftArrow,
+#rightArrow {
+  flex: 1;
+}
+
+/*/////  START QUIZ KNAP  /////*/
+#startButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 180px;
+  height: 50px;
+
+  margin-top: 110px;
+
+  background: #f1af07;
+  color: rgb(0, 0, 0);
+
+  border: 0.5px solid #000; /* sort outline/stroke */
+
+  border-radius: 999px; /* oval form */
+
+  font-size: 18px;
+
+  text-decoration: none; /* fjerner underline */
+}

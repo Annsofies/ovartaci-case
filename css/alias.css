@@ -1,16 +1,3 @@
-/*/////  BAGGRUNDSBILLEDE + FÅR SKÆRMEN TIL AT FYLDE DET HELE  /////*/
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-
-  background-image: url("/img/navnside.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
 /*/////  GLOBAL RESET: FJERNER BROWSERENS STANDARD MARGIN/PADDING, OG GØR STØRELSEER LETTERE AT STYLE MED  /////*/
 * {
   margin: 0; /* margin: 0; (→ fjerner standard luft udenfor elementer) */
@@ -18,13 +5,25 @@ body {
   box-sizing: border-box; /* box-sizing: border-box; (→ padding tælles med i width/height) */
 }
 
-/*/////  BODY  ///// */
+/*/////  BAGGRUNDSBILLEDE + FÅR SKÆRMEN TIL AT FYLDE DET HELE  /////*/
 body {
-  margin: 10px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
   font-family: Arial, Arial, Helvetica, sans-serif;
-  height: 100vh;
-
   overflow: hidden; /* fjerner scrollbars  */
+}
+
+.alias-screen {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/img/navnside.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 /*/////  HOVED-CONTAINER: Holder titel + input område  /////*/

@@ -23,7 +23,91 @@
 
       <!-- Side hvor bruger skriver alias -->
       <section id="aliasScreen" class="alias-screen">
-        <div class="alias-card">
+        
+
+         <!-- Hoved-container til hele siden -->
+         <div class="container">
+         <h1>SKRIV DIT NAVN</h1>
+            <p class="subtitle">Dit navn bruges til at vise dine resultater på scoreboardet til sidst i spillet.</p>
+        
+            <!-- Inputfelt hvor brugeren skriver navn -->
+            <div id="inputBox">
+                <input type="text" id="nameInput" placeholder="navn" readonly />
+            </div>
+
+            <!-- START KNAP - Linker videre til quiz-side -->
+            <a href="quiz.html" id="startButton">START QUIZ</a>
+
+        <!-- Tastatur -->
+            <div class="keyboard-area"></div>
+            <div class="keyboard">
+
+        <!-- Tastatur - HVID BAGGRUND BAG KEYBOARD -->
+        <div class="keyboard">
+
+            <!-- Række 1 -->
+            <div class="row">
+            <button class="key">Q</button>
+            <button class="key">W</button>
+            <button class="key">E</button>
+            <button class="key">R</button>
+            <button class="key">T</button>
+            <button class="key">Y</button>
+            <button class="key">U</button>
+            <button class="key">I</button>
+            <button class="key">O</button>
+            <button class="key">P</button>
+            <button class="key">Å</button>
+            </div>
+
+            <!-- Række 2 -->
+            <div class="row">
+            <button class="key">A</button>
+            <button class="key">S</button>
+            <button class="key">D</button>
+            <button class="key">F</button>
+            <button class="key">G</button>
+            <button class="key">H</button>
+            <button class="key">J</button>
+            <button class="key">K</button>
+            <button class="key">L</button>
+            <button class="key">Æ</button>
+            <button class="key">Ø</button>
+            </div>
+
+            <!-- Række 3 -->
+            <div class="row">
+            <button id="shift">SHIFT</button> <!-- Shift-knap -->
+
+            <button class="key">Z</button>
+            <button class="key">X</button>
+            <button class="key">C</button>
+            <button class="key">V</button>
+            <button class="key">B</button>
+            <button class="key">N</button>
+            <button class="key">M</button>
+
+            <button class="key">-</button>
+            <button class="key">.</button>
+
+            <button id="backspace">⌫</button>
+            </div>
+
+            <!-- Række 4 - Navigation + space -->
+            <div class="row">
+            <button id="leftArrow">◀</button>
+
+            <button id="space">SPACE</button>
+
+            <button id="rightArrow">▶</button>
+            </div>
+        </div>
+        </div>
+
+      </section>
+
+
+      <!-- <div class="alias-card">
           <h2 id="nameTitle">Indtast dit navn</h2>
           <p>
             Dette navn vil blive brugt til at se din placering på scoreboardet.
@@ -37,11 +121,8 @@
           />
           <p id="nameError" class="error"></p>
           <button class="start-btn" id="saveNameBtn">Start Quiz</button>
-        </div>
-      </section>
-
-
-
+        </div> -->
+      
 
       <!-- Spørgsmålsider -->
       <section id="questionScreen" class="question-screen">

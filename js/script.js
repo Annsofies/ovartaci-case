@@ -6,7 +6,6 @@ const questions = [
     question: "Hvad betyder navnet ‘Ovartaci’?",
     answers: ["Overlæge", "Overtosse", "Overkunstner"],
     correctIndex: 1,
-    image: "img/ovi.png",
     feedback:
       "Navnet Ovartaci forbindes med ordet ‘overtosse’ og indgår som en del af kunstnerens særlige identitet og fortælling.",
   },
@@ -14,7 +13,6 @@ const questions = [
     question: "Hvor mange år var Ovartaci indlagt?",
     answers: ["12 år", "24 år", "56 år"],
     correctIndex: 2,
-    image: "img/ovi.png",
     feedback:
       "Ovartaci tilbragte størstedelen af sit liv på Psykiatrisk Hospital i Risskov.",
   },
@@ -22,7 +20,6 @@ const questions = [
     question: "Hvilket tema fylder meget i Ovartacis kunst?",
     answers: ["Sport", "Identitet", "Politik"],
     correctIndex: 1,
-    image: "img/ovi.png",
     feedback:
       "Identitet, fantasi og menneskesind er centrale temaer i Ovartacis univers.",
   },
@@ -30,7 +27,6 @@ const questions = [
     question: "Hvilket materiale arbejdede Ovartaci ofte med?",
     answers: ["Metal", "Glas", "Træ og papmaché"],
     correctIndex: 2,
-    image: "img/ovi.png",
     feedback:
       "Ovartaci skabte figurer og værker med en fantasifuld brug af materialer.",
   },
@@ -38,7 +34,6 @@ const questions = [
     question: "Hvordan beskrev Ovartaci ofte sig selv?",
     answers: ["Som konge", "Som kvinde", "Som astronaut"],
     correctIndex: 1,
-    image: "img/ovi.png",
     feedback:
       "Køn og identitet spillede en vigtig rolle i Ovartacis selvforståelse og kunst.",
   },
@@ -46,7 +41,6 @@ const questions = [
     question: "Hvilket ord beskriver bedst Ovartacis univers?",
     answers: ["Minimalistisk", "Teknologisk", "Fantasifuldt"],
     correctIndex: 2,
-    image: "img/ovi.png",
     feedback:
       "Ovartacis univers opleves ofte som drømmende, særligt og fantasifuldt.",
   },
@@ -58,7 +52,6 @@ const questions = [
       "På psykiatrisk hospital i Risskov",
     ],
     correctIndex: 2,
-    image: "img/ovi.png",
     feedback:
       "Hospitalet i Risskov blev rammen om en stor del af Ovartacis kunstneriske produktion.",
   },
@@ -70,7 +63,6 @@ const questions = [
       "At udtrykke sit indre univers",
     ],
     correctIndex: 2,
-    image: "img/ovi.png",
     feedback:
       "Kunsten blev en måde at udtrykke tanker, følelser, identitet og fantasi på.",
   },
@@ -78,7 +70,6 @@ const questions = [
     question: "Hvilken type oplevelse giver Ovartacis kunst ofte?",
     answers: ["Historiske fakta", "Drømme og fantasi", "Action og spænding"],
     correctIndex: 1,
-    image: "img/ovi.png",
     feedback: "Værkerne inviterer til fortolkning, fantasi og refleksion.",
   },
   {
@@ -89,7 +80,6 @@ const questions = [
       "At man selv deltager aktivt",
     ],
     correctIndex: 2,
-    image: "img/ovi.png",
     feedback:
       "Når brugeren deltager aktivt, bliver formidlingen mere involverende og engagerende.",
   },

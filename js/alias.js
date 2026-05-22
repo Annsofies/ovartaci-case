@@ -1,3 +1,5 @@
+"use strict";
+
 //  HTML ELEMENTER - Henter elementer fra HTML
 const input = document.getElementById("nameInput");
 const keys = document.querySelectorAll(".key");

@@ -106,7 +106,7 @@ const screens = {
 
 /* Finder knapper og elementer fra HTML */
 const startBtn = document.querySelector("#start-btn");
-const saveNameBtn = document.querySelector("#saveNameBtn");
+const saveNameBtn = document.querySelector("#startButton");
 const nextBtn = document.querySelector("#nextBtn");
 const restartBtn = document.querySelector("#restartBtn");
 

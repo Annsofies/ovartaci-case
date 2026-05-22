@@ -119,7 +119,13 @@ body {
   cursor: pointer;
 }
 
-/*/////  SE FEEDBACK KNAP  /////*/
+/* markerer det valgte svar */
+.answer-btn.selected {
+  background: #324754;
+  color: white;
+}
+
+/* se feedback knap /*/
 .feedback-btn {
   display: none;
   position: fixed;

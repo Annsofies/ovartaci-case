@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/alias.css" />
     <link rel="stylesheet" href="css/forside.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&family=Special+Gothic+Expanded+One&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- Startside med overskrift og startknap -->
@@ -18,8 +21,8 @@
         <div class="hero-card">
           <h1>HVOR GODT KENDER DU OVATACI?</h1>
           <p>
-            Test din viden om Ovataci og se, hvor meget du virkelig ved! 
-            Se din samlede score efter og dyst mod andre.
+            Test din viden om Ovataci og se, hvor meget du virkelig ved! Se din
+            samlede score efter og dyst mod andre.
           </p>
           <button id="start-btn" class="startBtn">START QUIZ</button>
         </div>
@@ -27,91 +30,90 @@
 
       <!-- Side hvor bruger skriver alias -->
       <section id="aliasScreen" class="alias-screen">
+        <!-- Hoved-container til hele navnsiden siden -->
+        <div class="container">
+          <h1>SKRIV DIT NAVN</h1>
+          <p class="subtitle">
+            Dit navn bruges til at vise dine resultater på scoreboardet til
+            sidst i spillet.
+          </p>
 
+          <!-- Inputfelt hvor brugeren skriver navn -->
+          <div id="inputBox">
+            <input type="text" id="nameInput" placeholder="navn" readonly />
+          </div>
 
-         <!-- Hoved-container til hele navnsiden siden -->
-         <div class="container">
-         <h1>SKRIV DIT NAVN</h1>
-            <p class="subtitle">Dit navn bruges til at vise dine resultater på scoreboardet til sidst i spillet.</p>
-        
-            <!-- Inputfelt hvor brugeren skriver navn -->
-            <div id="inputBox">
-                <input type="text" id="nameInput" placeholder="navn" readonly />
-            </div>
+          <!-- Skriver en fejlbesked hvis brugeren ikke skriver noget i inputfeltet -->
+          <p id="nameError"></p>
 
-            <!-- Skriver en fejlbesked hvis brugeren ikke skriver noget i inputfeltet -->
-            <p id="nameError"></p>
+          <!-- START KNAP - Linker videre til quiz-side -->
+          <button id="startButton">START QUIZ</button>
 
-            <!-- START KNAP - Linker videre til quiz-side -->
-            <button id="startButton">START QUIZ</button>
+          <!-- Tastatur -->
+          <div class="keyboard-area"></div>
 
-            <!-- Tastatur -->
-            <div class="keyboard-area"></div>
-            <div class="keyboard">
-
-            <!-- Tastatur - HVID BAGGRUND BAG KEYBOARD -->
-            <div class="keyboard">
-
+          <!-- Tastatur - HVID BAGGRUND BAG KEYBOARD -->
+          <div class="keyboard">
             <!-- Række 1 -->
             <div class="row">
-            <button class="key">Q</button>
-            <button class="key">W</button>
-            <button class="key">E</button>
-            <button class="key">R</button>
-            <button class="key">T</button>
-            <button class="key">Y</button>
-            <button class="key">U</button>
-            <button class="key">I</button>
-            <button class="key">O</button>
-            <button class="key">P</button>
-            <button class="key">Å</button>
+              <button class="key">Q</button>
+              <button class="key">W</button>
+              <button class="key">E</button>
+              <button class="key">R</button>
+              <button class="key">T</button>
+              <button class="key">Y</button>
+              <button class="key">U</button>
+              <button class="key">I</button>
+              <button class="key">O</button>
+              <button class="key">P</button>
+              <button class="key">Å</button>
             </div>
 
             <!-- Række 2 -->
             <div class="row">
-            <button class="key">A</button>
-            <button class="key">S</button>
-            <button class="key">D</button>
-            <button class="key">F</button>
-            <button class="key">G</button>
-            <button class="key">H</button>
-            <button class="key">J</button>
-            <button class="key">K</button>
-            <button class="key">L</button>
-            <button class="key">Æ</button>
-            <button class="key">Ø</button>
+              <button class="key">A</button>
+              <button class="key">S</button>
+              <button class="key">D</button>
+              <button class="key">F</button>
+              <button class="key">G</button>
+              <button class="key">H</button>
+              <button class="key">J</button>
+              <button class="key">K</button>
+              <button class="key">L</button>
+              <button class="key">Æ</button>
+              <button class="key">Ø</button>
             </div>
 
             <!-- Række 3 -->
             <div class="row">
-            <button id="shift">SHIFT</button> <!-- Shift-knap -->
+              <button id="shift">SHIFT</button>
+              <!-- Shift-knap -->
 
-            <button class="key">Z</button>
-            <button class="key">X</button>
-            <button class="key">C</button>
-            <button class="key">V</button>
-            <button class="key">B</button>
-            <button class="key">N</button>
-            <button class="key">M</button>
+              <button class="key">Z</button>
+              <button class="key">X</button>
+              <button class="key">C</button>
+              <button class="key">V</button>
+              <button class="key">B</button>
+              <button class="key">N</button>
+              <button class="key">M</button>
 
-            <button class="key">-</button>
-            <button class="key">.</button>
+              <button class="key">-</button>
+              <button class="key">.</button>
 
-            <button id="backspace">⌫</button>
+              <button id="backspace">⌫</button>
             </div>
 
             <!-- Række 4 - Navigation + space -->
             <div class="row">
-            <button id="leftArrow">◀</button>
+              <button id="leftArrow">◀</button>
 
-            <button id="space">SPACE</button>
+              <button id="space">SPACE</button>
 
-            <button id="rightArrow">▶</button>
+              <button id="rightArrow">▶</button>
             </div>
+          </div>
         </div>
-        </div>
-
-      </section>      
+      </section>
 
       <!-- Spørgsmålsider -->
       <section id="questionScreen" class="question-screen">
@@ -126,7 +128,7 @@
           <figure class="image-container">
             <img
               id="questionImage"
-              src=""
+              src="#"
               alt="Billede releteret til spørgsmål"
             />
           </figure>
@@ -153,7 +155,7 @@
             <p id="correctAnswerText" class="correct-answer"></p>
           </div>
           <figure class="feedback-image-wrap">
-            <img id="feedbackImage" src="" alt="Feedback billede" />
+            <img id="feedbackImage" src="#" alt="Feedback billede" />
           </figure>
         </div>
         <button class="next-btn" id="nextBtn">Næste spørgsmål</button>

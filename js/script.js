@@ -98,6 +98,7 @@ const screens = {
 const startBtn = document.querySelector("#start-btn");
 const saveNameBtn = document.querySelector("#startButton");
 const nextBtn = document.querySelector("#nextBtn");
+const feedbackBtn = document.querySelector("#feedbackBtn");
 const restartBtn = document.querySelector("#restartBtn");
 
 const nameInput = document.querySelector("#nameInput");
@@ -185,14 +186,9 @@ function renderQuestion() {
   });
 
   showScreen("question"); // viser spørgsmålsskærmen
+
+  feedbackBtn.style.display = "block"; // viser feedback knappen
 }
-
-
-
-   
-   
-
-
 
 // Tjekker om brugeren har svaret rigtigt eller forkert
 function handleAnswer(selectedIndex) {
@@ -210,7 +206,10 @@ function handleAnswer(selectedIndex) {
   correctAnswerText.textContent = `Rigtigt svar: ${currentQuestion.answers[correctIndex]}`;
 
   showScreen("feedback");
-}
+
+   feedbackBtn.style.display = "none";
+
+};
 
 // Går videre til næste spørgsmål eller viser scoreboard
 function nextQuestion() {
@@ -300,4 +299,11 @@ nextBtn.addEventListener("click", () => {
 // Genstart quizzen
 restartBtn.addEventListener("click", () => {
   showScreen("alias");
+});
+
+
+feedbackBtn.addEventListener("click", () => {
+  if (selectedAnswerIndex === null) return;
+
+  handleAnswer(selectedAnswerIndex);
 });

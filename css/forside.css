@@ -1,10 +1,3 @@
-/*/////  GLOBAL RESET: FJERNER BROWSERENS STANDARD MARGIN/PADDING, OG GØR STØRELSEER LETTERE AT STYLE MED  /////*/
-* {
-  margin: 0; /* margin: 0; (→ fjerner standard luft udenfor elementer) */
-  padding: 0; /* padding: 0; (→ fjerner standard luft indeni elementer) */
-  box-sizing: border-box; /* box-sizing: border-box; (→ padding tælles med i width/height) */
-}
-
 /*/////  BAGGRUNDSBILLEDE + FÅR SKÆRMEN TIL AT FYLDE DET HELE  /////*/
 body {
   margin: 0;
@@ -15,14 +8,61 @@ body {
   overflow: hidden; /* fjerner scrollbars  */
 }
 
-
-.quiz {
+/* HERO SCREEN - base (skjult) */
+.hero-screen {
+  display: none; /* skjuler forsiden som standard */
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100vh;
+
   background-image: url("/img/forside.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+/* HERO SCREEN - når aktiv */
+.hero-screen.active {
+  display: flex;
+
+  justify-content: flex-end;
+  align-items: flex-start; /* op mod toppen */
+  padding-right: 30px;
+  padding-top: 50px;
+}
+
+/*///// OVERSKRIFT /////*/
+.hero-card h1 {
+  max-width: 720px;
+  text-align: right;
+  font-size: 110px;
+  font-weight: bold;
+  color: white;
+
+  line-height: 0.85;
+  margin: 0;
+  letter-spacing: -1px;
+
+  text-shadow:
+    2px 2px 0 black,
+    -2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+}
+
+/*///// UNDERTEXT /////*/
+.hero-card p {
+  max-width: 600px;
+  text-align: right;
+  font-size: 18px; /* mindre tekst */
+  margin: 10px 0 5px 0;
+  font-weight: normal;
+  color: white;
+
+  text-shadow:
+    2px 2px 0 black,
+    -2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
 }

@@ -1,9 +1,4 @@
-/*/////  GLOBAL RESET: FJERNER BROWSERENS STANDARD MARGIN/PADDING, OG GØR STØRELSEER LETTERE AT STYLE MED  /////*/
-* {
-  margin: 0; /* margin: 0; (→ fjerner standard luft udenfor elementer) */
-  padding: 0; /* padding: 0; (→ fjerner standard luft indeni elementer) */
-  box-sizing: border-box; /* box-sizing: border-box; (→ padding tælles med i width/height) */
-}
+
 
 /*/////  BAGGRUNDSBILLEDE + FÅR SKÆRMEN TIL AT FYLDE DET HELE  /////*/
 body {
@@ -66,6 +61,7 @@ h1 {
   margin: 0px auto 10px auto; /* top højre bund venstre */
 }
 
+/*/////  FEJL BESKED TIL NAME INPUT ///$*/
 #nameError {
   height: 24px;
 

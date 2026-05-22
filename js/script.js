@@ -1,6 +1,6 @@
 "use strict";
 
-/* Liste med alle spørgsmål, svar, billede, korrekt svar og feedback */
+// Liste med alle spørgsmål, svar, billede, korrekt svar og feedback
 const questions = [
   {
     question: "Hvad betyder navnet ‘Ovartaci’?",
@@ -85,7 +85,7 @@ const questions = [
   },
 ];
 
-/* Finder de forskellige sider i HTML */
+// Finder de forskellige sider i HTML
 const screens = {
   start: document.querySelector("#startScreen"),
   alias: document.querySelector("#aliasScreen"),
@@ -94,7 +94,7 @@ const screens = {
   score: document.querySelector("#scoreScreen"),
 };
 
-/* Finder knapper og elementer fra HTML */
+// Finder knapper og elementer fra HTML
 const startBtn = document.querySelector("#start-btn");
 const saveNameBtn = document.querySelector("#startButton");
 const nextBtn = document.querySelector("#nextBtn");
@@ -121,12 +121,15 @@ const feedbackProgressBar = document.querySelector("#feedbackProgressBar");
 const finalScore = document.querySelector("#finalScore");
 const scoreList = document.querySelector("#scoreList");
 
-/* Variabler der holder styr på quizzen */
+// Variabler der holder styr på quizzen
 let currentQuestionIndex = 0;
 let score = 0;
 let playerName = "";
 
-/* Viser kun den skærm, som brugeren skal se */
+// Gemmer hvilket svar brugeren har valgt
+let selectedAnswerIndex = null;
+
+// Viser kun den skærm, som brugeren skal se
 function showScreen(screenName) {
   Object.values(screens).forEach((screen) => {
     screen.classList.remove("active");
@@ -135,47 +138,63 @@ function showScreen(screenName) {
   screens[screenName].classList.add("active");
 }
 
-/* Opdaterer progressbar og viser hvilket spørgsmål brugeren er på */
+// Opdaterer progressbar og viser hvilket spørgsmål brugeren er på
 function updateProgress() {
-  let progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+  const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   progressBar.style.width = progress + "%";
   feedbackProgressBar.style.width = progress + "%";
 
-  let questionNumber = currentQuestionIndex + 1;
+  const questionNumber = currentQuestionIndex + 1;
 
   questionCounter.textContent = `Spørgsmål ${questionNumber} af ${questions.length}`;
   feedbackCounter.textContent = `Spørgsmål ${questionNumber} af ${questions.length}`;
 }
 
-/* Viser spørgsmål, billede og svarmuligheder */
+// Viser spørgsmål, billede og svarmuligheder
 function renderQuestion() {
-  let currentQuestion = questions[currentQuestionIndex];
+  // nulstiller valgt svar
+  selectedAnswerIndex = null;
+
+  const currentQuestion = questions[currentQuestionIndex];
 
   updateProgress();
 
   questionText.textContent = currentQuestion.question;
-  questionImage.src = currentQuestion.image;
 
   answers.innerHTML = "";
 
-  currentQuestion.answers.forEach(function (answer, index) {
-    let button = document.createElement("button");
+  currentQuestion.answers.forEach((answer, index) => {
+    const button = document.createElement("button"); // opretter en ny knap
 
-    button.textContent = answer;
+    button.textContent = answer; // viser svaret på knappen
+
     button.classList.add("answer-btn");
 
-    button.onclick = function () {
-      handleAnswer(index);
+    button.onclick = () => {
+      selectedAnswerIndex = index; // gemmer valgt svar
+
+      document.querySelectorAll(".answer-btn").forEach((btn) => {
+        btn.classList.remove("selected"); // fjerner markering fra andre knapper
+      });
+
+      button.classList.add("selected"); // markerer valgt knap
     };
 
-    answers.appendChild(button);
+    answers.appendChild(button); // tilføjer knappen til svarmulighederne
   });
 
-  showScreen("question");
+  showScreen("question"); // viser spørgsmålsskærmen
 }
 
-/* Tjekker om brugeren har svaret rigtigt eller forkert */
+
+
+   
+   
+
+
+
+// Tjekker om brugeren har svaret rigtigt eller forkert
 function handleAnswer(selectedIndex) {
   const currentQuestion = questions[currentQuestionIndex];
   const correctIndex = currentQuestion.correctIndex;
@@ -189,12 +208,11 @@ function handleAnswer(selectedIndex) {
 
   feedbackText.textContent = currentQuestion.feedback;
   correctAnswerText.textContent = `Rigtigt svar: ${currentQuestion.answers[correctIndex]}`;
-  feedbackImage.src = currentQuestion.image;
 
   showScreen("feedback");
 }
 
-/* Går videre til næste spørgsmål eller viser scoreboard */
+// Går videre til næste spørgsmål eller viser scoreboard
 function nextQuestion() {
   currentQuestionIndex++;
 
@@ -207,7 +225,7 @@ function nextQuestion() {
   }
 }
 
-/* Gemmer brugerens score i localStorage */
+// Gemmer brugerens score i localStorage
 function saveScore() {
   const scores = JSON.parse(localStorage.getItem("ovartaciScores")) || [];
 
@@ -222,7 +240,7 @@ function saveScore() {
   localStorage.setItem("ovartaciScores", JSON.stringify(scores));
 }
 
-/* Viser scoreboardet */
+// Viser scoreboardet
 function renderScoreboard() {
   const scores = JSON.parse(localStorage.getItem("ovartaciScores")) || [];
 
@@ -237,20 +255,20 @@ function renderScoreboard() {
   });
 }
 
-/* Starter quizzen forfra */
+// Starter quizzen forfra
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
   renderQuestion();
 }
 
-/* Når brugeren klikker på startknappen */
+// Når brugeren klikker på startknappen
 startBtn.addEventListener("click", () => {
   showScreen("alias");
   nameInput.focus();
 });
 
-/* Gemmer navnet og starter quizzen */
+// Gemmer navnet og starter quizzen
 saveNameBtn.addEventListener("click", () => {
   const name = nameInput.value.trim();
 
@@ -265,17 +283,21 @@ saveNameBtn.addEventListener("click", () => {
   startQuiz();
 });
 
-/* Gør det muligt at trykke Enter efter navn */
+// Gør det muligt at trykke Enter efter navn
 nameInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     saveNameBtn.click();
   }
 });
 
-/* Knap til næste spørgsmål */
-nextBtn.addEventListener("click", nextQuestion);
+// Næste spørgsmål
+nextBtn.addEventListener("click", () => {
+  if (selectedAnswerIndex === null) return;
 
-/* Knap til at starte quizzen igen */
+  handleAnswer(selectedAnswerIndex);
+});
+
+// Genstart quizzen
 restartBtn.addEventListener("click", () => {
   showScreen("alias");
 });

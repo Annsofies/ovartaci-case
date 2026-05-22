@@ -1,0 +1,9 @@
+/*/////  BAGGRUNDSBILLEDE + FÅR SKÆRMEN TIL AT FYLDE DET HELE  /////*/
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, Arial, Helvetica, sans-serif;
+  overflow: hidden; /* fjerner scrollbars  */
+}

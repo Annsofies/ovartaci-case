@@ -1,11 +1,12 @@
 "use strict";
 
-// Liste med alle spørgsmål, svar, billede, korrekt svar og feedback
 const questions = [
   {
     question: "Hvad betyder navnet ‘Ovartaci’?",
     answers: ["Overlæge", "Overtosse", "Overkunstner"],
     correctIndex: 1,
+    image:
+      "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?q=80&w=900&auto=format&fit=crop",
     feedback:
       "Navnet Ovartaci forbindes med ordet ‘overtosse’ og indgår som en del af kunstnerens særlige identitet og fortælling.",
   },
@@ -13,6 +14,8 @@ const questions = [
     question: "Hvor mange år var Ovartaci indlagt?",
     answers: ["12 år", "24 år", "56 år"],
     correctIndex: 2,
+    image:
+      "https://images.unsplash.com/photo-1564399580075-5dfe19c205f3?q=80&w=900&auto=format&fit=crop",
     feedback:
       "Ovartaci tilbragte størstedelen af sit liv på Psykiatrisk Hospital i Risskov.",
   },
@@ -20,6 +23,8 @@ const questions = [
     question: "Hvilket tema fylder meget i Ovartacis kunst?",
     answers: ["Sport", "Identitet", "Politik"],
     correctIndex: 1,
+    image:
+      "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=900&auto=format&fit=crop",
     feedback:
       "Identitet, fantasi og menneskesind er centrale temaer i Ovartacis univers.",
   },
@@ -27,6 +32,8 @@ const questions = [
     question: "Hvilket materiale arbejdede Ovartaci ofte med?",
     answers: ["Metal", "Glas", "Træ og papmaché"],
     correctIndex: 2,
+    image:
+      "https://images.unsplash.com/photo-1515405295579-ba7b45403062?q=80&w=900&auto=format&fit=crop",
     feedback:
       "Ovartaci skabte figurer og værker med en fantasifuld brug af materialer.",
   },
@@ -34,6 +41,8 @@ const questions = [
     question: "Hvordan beskrev Ovartaci ofte sig selv?",
     answers: ["Som konge", "Som kvinde", "Som astronaut"],
     correctIndex: 1,
+    image:
+      "https://images.unsplash.com/photo-1554907984-15263bfd63bd?q=80&w=900&auto=format&fit=crop",
     feedback:
       "Køn og identitet spillede en vigtig rolle i Ovartacis selvforståelse og kunst.",
   },
@@ -41,6 +50,8 @@ const questions = [
     question: "Hvilket ord beskriver bedst Ovartacis univers?",
     answers: ["Minimalistisk", "Teknologisk", "Fantasifuldt"],
     correctIndex: 2,
+    image:
+      "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=900&auto=format&fit=crop",
     feedback:
       "Ovartacis univers opleves ofte som drømmende, særligt og fantasifuldt.",
   },
@@ -52,6 +63,8 @@ const questions = [
       "På psykiatrisk hospital i Risskov",
     ],
     correctIndex: 2,
+    image:
+      "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?q=80&w=900&auto=format&fit=crop",
     feedback:
       "Hospitalet i Risskov blev rammen om en stor del af Ovartacis kunstneriske produktion.",
   },
@@ -63,6 +76,8 @@ const questions = [
       "At udtrykke sit indre univers",
     ],
     correctIndex: 2,
+    image:
+      "https://images.unsplash.com/photo-1518998053901-5348d3961a04?q=80&w=900&auto=format&fit=crop",
     feedback:
       "Kunsten blev en måde at udtrykke tanker, følelser, identitet og fantasi på.",
   },
@@ -70,6 +85,8 @@ const questions = [
     question: "Hvilken type oplevelse giver Ovartacis kunst ofte?",
     answers: ["Historiske fakta", "Drømme og fantasi", "Action og spænding"],
     correctIndex: 1,
+    image:
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=900&auto=format&fit=crop",
     feedback: "Værkerne inviterer til fortolkning, fantasi og refleksion.",
   },
   {
@@ -80,194 +97,151 @@ const questions = [
       "At man selv deltager aktivt",
     ],
     correctIndex: 2,
+    image:
+      "https://images.unsplash.com/photo-1524230572899-a752b3835840?q=80&w=900&auto=format&fit=crop",
     feedback:
       "Når brugeren deltager aktivt, bliver formidlingen mere involverende og engagerende.",
   },
 ];
 
-// Finder de forskellige sider i HTML
 const screens = {
   start: document.querySelector("#startScreen"),
   alias: document.querySelector("#aliasScreen"),
-  question: document.querySelector("#questionScreen"),
+  quiz: document.querySelector("#quizScreen"),
   feedback: document.querySelector("#feedbackScreen"),
   score: document.querySelector("#scoreScreen"),
 };
 
-// Finder knapper og elementer fra HTML
-const startBtn = document.querySelector("#start-btn");
-const saveNameBtn = document.querySelector("#startButton");
+const startBtn = document.querySelector("#startBtn");
+const saveNameBtn = document.querySelector("#saveNameBtn");
 const nextBtn = document.querySelector("#nextBtn");
-const feedbackBtn = document.querySelector("#feedbackBtn");
 const restartBtn = document.querySelector("#restartBtn");
-
+const clearScoresBtn = document.querySelector("#clearScoresBtn");
 const nameInput = document.querySelector("#nameInput");
 const nameError = document.querySelector("#nameError");
-
 const questionCounter = document.querySelector("#questionCounter");
-const questionTitle = document.querySelector("#questionTitle");
+const feedbackCounter = document.querySelector("#feedbackCounter");
+const progressBar = document.querySelector("#progressBar");
+const feedbackProgressBar = document.querySelector("#feedbackProgressBar");
 const questionText = document.querySelector("#questionText");
 const questionImage = document.querySelector("#questionImage");
-const answers = document.querySelector("#answers");
-
-const feedbackCounter = document.querySelector("#feedbackCounter");
+const answersContainer = document.querySelector("#answers");
 const feedbackTitle = document.querySelector("#feedbackTitle");
 const feedbackText = document.querySelector("#feedbackText");
 const correctAnswerText = document.querySelector("#correctAnswerText");
 const feedbackImage = document.querySelector("#feedbackImage");
-
-const progressBar = document.querySelector("#progressBar");
-const feedbackProgressBar = document.querySelector("#feedbackProgressBar");
-
 const finalScore = document.querySelector("#finalScore");
 const scoreList = document.querySelector("#scoreList");
 
-// Variabler der holder styr på quizzen
 let currentQuestionIndex = 0;
 let score = 0;
-let playerName = "";
+let playerName = localStorage.getItem("ovartaciPlayerName") || "";
 
-// Gemmer hvilket svar brugeren har valgt
-let selectedAnswerIndex = null;
-
-// Viser kun den skærm, som brugeren skal se
 function showScreen(screenName) {
   Object.values(screens).forEach((screen) => {
-    screen.classList.remove("active");
+    if (screen) screen.classList.remove("active");
   });
 
-  screens[screenName].classList.add("active");
+  if (screens[screenName]) {
+    screens[screenName].classList.add("active");
+  }
 }
 
-// Opdaterer progressbar og viser hvilket spørgsmål brugeren er på
 function updateProgress() {
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
-
-  progressBar.style.width = progress + "%";
-  feedbackProgressBar.style.width = progress + "%";
-
-  const questionNumber = currentQuestionIndex + 1;
-
-  questionCounter.textContent = `Spørgsmål ${questionNumber} af ${questions.length}`;
-  feedbackCounter.textContent = `Spørgsmål ${questionNumber} af ${questions.length}`;
+  progressBar.style.width = `${progress}%`;
+  feedbackProgressBar.style.width = `${progress}%`;
+  questionCounter.textContent = `Spørgsmål ${currentQuestionIndex + 1}/${questions.length}`;
+  feedbackCounter.textContent = `Spørgsmål ${currentQuestionIndex + 1}/${questions.length}`;
 }
 
-// Viser spørgsmål, billede og svarmuligheder
 function renderQuestion() {
-  // nulstiller valgt svar
-  selectedAnswerIndex = null;
-
   const currentQuestion = questions[currentQuestionIndex];
-
   updateProgress();
-
   questionText.textContent = currentQuestion.question;
-
-  answers.innerHTML = "";
+  questionImage.src = currentQuestion.image;
+  feedbackImage.src = currentQuestion.image;
+  answersContainer.innerHTML = "";
 
   currentQuestion.answers.forEach((answer, index) => {
-    const button = document.createElement("button"); // opretter en ny knap
-
-    button.textContent = answer; // viser svaret på knappen
-
-    button.classList.add("answer-btn");
-
-    button.onclick = () => {
-      selectedAnswerIndex = index; // gemmer valgt svar
-
-      document.querySelectorAll(".answer-btn").forEach((btn) => {
-        btn.classList.remove("selected"); // fjerner markering fra andre knapper
-      });
-
-      button.classList.add("selected"); // markerer valgt knap
-    };
-
-    answers.appendChild(button); // tilføjer knappen til svarmulighederne
+    const button = document.createElement("button");
+    button.className = "answer-btn";
+    button.type = "button";
+    button.textContent = answer;
+    button.addEventListener("click", () => handleAnswer(index));
+    answersContainer.appendChild(button);
   });
 
-  showScreen("question"); // viser spørgsmålsskærmen
-
-  feedbackBtn.style.display = "block"; // viser feedback knappen
+  showScreen("quiz");
 }
 
-// Tjekker om brugeren har svaret rigtigt eller forkert
 function handleAnswer(selectedIndex) {
   const currentQuestion = questions[currentQuestionIndex];
-  const correctIndex = currentQuestion.correctIndex;
+  const isCorrect = selectedIndex === currentQuestion.correctIndex;
 
-  if (selectedIndex === correctIndex) {
-    score++;
-    feedbackTitle.textContent = "Korrekt!";
-  } else {
-    feedbackTitle.textContent = "Forkert!";
-  }
+  if (isCorrect) score += 1;
 
+  screens.feedback.classList.toggle("correct", isCorrect);
+  screens.feedback.classList.toggle("wrong", !isCorrect);
+  feedbackTitle.textContent = isCorrect ? "Korrekt!" : "Forkert!";
   feedbackText.textContent = currentQuestion.feedback;
-  correctAnswerText.textContent = `Rigtigt svar: ${currentQuestion.answers[correctIndex]}`;
-
+  correctAnswerText.textContent = `Rigtigt svar: ${currentQuestion.answers[currentQuestion.correctIndex]}`;
   showScreen("feedback");
+}
 
-   feedbackBtn.style.display = "none";
-
-};
-
-// Går videre til næste spørgsmål eller viser scoreboard
 function nextQuestion() {
-  currentQuestionIndex++;
+  currentQuestionIndex += 1;
 
   if (currentQuestionIndex < questions.length) {
     renderQuestion();
-  } else {
-    saveScore();
-    renderScoreboard();
-    showScreen("score");
+    return;
   }
+
+  saveScore();
+  renderScoreboard();
+  showScreen("score");
 }
 
-// Gemmer brugerens score i localStorage
 function saveScore() {
   const scores = JSON.parse(localStorage.getItem("ovartaciScores")) || [];
-
   scores.push({
     name: playerName,
-    score: score,
+    score,
     total: questions.length,
+    date: new Date().toISOString(),
   });
-
   scores.sort((a, b) => b.score - a.score);
-
-  localStorage.setItem("ovartaciScores", JSON.stringify(scores));
+  localStorage.setItem("ovartaciScores", JSON.stringify(scores.slice(0, 8)));
 }
 
-// Viser scoreboardet
 function renderScoreboard() {
   const scores = JSON.parse(localStorage.getItem("ovartaciScores")) || [];
-
-  finalScore.textContent = `${playerName}, du fik ${score} ud af ${questions.length} rigtige.`;
-
+  finalScore.textContent = `${playerName}, du fik ${score}/${questions.length} rigtige.`;
   scoreList.innerHTML = "";
 
   scores.forEach((entry) => {
     const li = document.createElement("li");
-    li.textContent = `${entry.name}: ${entry.score}/${entry.total}`;
+    li.innerHTML = `<span>${entry.name}</span><span>${entry.score}/${entry.total}</span>`;
     scoreList.appendChild(li);
   });
 }
 
-// Starter quizzen forfra
-function startQuiz() {
+function startNewQuiz() {
   currentQuestionIndex = 0;
   score = 0;
   renderQuestion();
 }
 
-// Når brugeren klikker på startknappen
 startBtn.addEventListener("click", () => {
+  nameInput.value = playerName;
   showScreen("alias");
   nameInput.focus();
+
+  if (window.updateAliasCursorToEnd) {
+    window.updateAliasCursorToEnd();
+  }
 });
 
-// Gemmer navnet og starter quizzen
 saveNameBtn.addEventListener("click", () => {
   const name = nameInput.value.trim();
 
@@ -278,32 +252,19 @@ saveNameBtn.addEventListener("click", () => {
 
   nameError.textContent = "";
   playerName = name;
-
-  startQuiz();
+  localStorage.setItem("ovartaciPlayerName", playerName);
+  startNewQuiz();
 });
 
-// Gør det muligt at trykke Enter efter navn
 nameInput.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    saveNameBtn.click();
-  }
+  if (event.key === "Enter") saveNameBtn.click();
 });
 
-// Næste spørgsmål
-nextBtn.addEventListener("click", () => {
-  if (selectedAnswerIndex === null) return;
-
-  handleAnswer(selectedAnswerIndex);
-});
-
-// Genstart quizzen
+nextBtn.addEventListener("click", nextQuestion);
 restartBtn.addEventListener("click", () => {
-  showScreen("alias");
+  showScreen("start");
 });
-
-
-feedbackBtn.addEventListener("click", () => {
-  if (selectedAnswerIndex === null) return;
-
-  handleAnswer(selectedAnswerIndex);
+clearScoresBtn.addEventListener("click", () => {
+  localStorage.removeItem("ovartaciScores");
+  renderScoreboard();
 });

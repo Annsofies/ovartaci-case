@@ -1,181 +1,175 @@
 <!doctype html>
-<html lang="en">
+<html lang="da">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hvor godt kender du Ovataci?</title>
+    <title>Hvor godt kender du Ovartaci?</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/forside.css" />
     <link rel="stylesheet" href="css/alias.css" />
-    <link rel="stylesheet" href="css/questions.css" />
-    <link rel="stylesheet" href="css/feedback.css" />
-    <link rel="stylesheet" href="css/scoreboard.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&family=Special+Gothic+Expanded+One&display=swap"
-      rel="stylesheet"
-    />
+
+    <script src="js/script.js" defer></script>
+    <script src="js/alias.js" defer></script>
   </head>
   <body>
-    <!-- Startside med overskrift og startknap -->
-    <main id="quiz" class="quiz">
-      <section id="startScreen" class="hero-screen active">
-        <div class="hero-card">
-          <h1>HVOR GODT KENDER DU OVATACI?</h1>
-          <p>
-            Test din viden om Ovataci og se, hvor meget du virkelig ved! Se din
-            samlede score efter og dyst mod andre.
-          </p>
-          <button id="start-btn" class="startBtn">START QUIZ</button>
+    <main id="app" class="app">
+      <section
+        id="startScreen"
+        class="screen hero-screen active"
+        aria-labelledby="heroTitle"
+      >
+        <div class="hero-overlay">
+          <div class="hero-card">
+            <h1 id="heroTitle">Hvor godt kender du Ovartaci?</h1>
+            <p>
+              Test din viden gennem en interaktiv quiz med feedback, point og
+              leaderboard.
+            </p>
+            <button class="primary-btn" id="startBtn">Start quiz</button>
+          </div>
         </div>
       </section>
+      <section
+        id="aliasScreen"
+        class="screen alias-screen"
+        aria-labelledby="aliasTitle"
+      >
+        <div class="content-card">
+          <h2 id="aliasTitle">Indtast dit alias</h2>
 
-      <!-- Side hvor bruger skriver alias -->
-      <section id="aliasScreen" class="alias-screen">
-        <!-- Hoved-container til hele navnsiden siden -->
-        <div class="container">
-          <h1>SKRIV DIT NAVN</h1>
-          <p class="subtitle">
-            Dit navn bruges til at vise dine resultater på scoreboardet til
-            sidst i spillet.
-          </p>
+          <input
+            id="nameInput"
+            type="text"
+            maxlength="18"
+            placeholder="Skriv dit alias"
+            readonly
+          />
+          <p id="nameError" class="error" aria-live="polite"></p>
 
-          <!-- Inputfelt hvor brugeren skriver navn -->
-          <div id="inputBox">
-            <input type="text" id="nameInput" placeholder="navn" readonly />
-          </div>
-
-          <!-- Skriver en fejlbesked hvis brugeren ikke skriver noget i inputfeltet -->
-          <p id="nameError"></p>
-
-          <!-- START KNAP - Linker videre til quiz-side -->
-          <button id="startButton">START QUIZ</button>
-
-          <!-- Tastatur -->
-          <div class="keyboard-area"></div>
-
-          <!-- Tastatur - HVID BAGGRUND BAG KEYBOARD -->
+          <!-- KEYBOARD -->
           <div class="keyboard">
-            <!-- Række 1 -->
-            <div class="row">
-              <button class="key">Q</button>
-              <button class="key">W</button>
-              <button class="key">E</button>
-              <button class="key">R</button>
-              <button class="key">T</button>
-              <button class="key">Y</button>
-              <button class="key">U</button>
-              <button class="key">I</button>
-              <button class="key">O</button>
-              <button class="key">P</button>
-              <button class="key">Å</button>
+            <div class="keyboard-row">
+              <button type="button" class="key">Q</button>
+              <button type="button" class="key">W</button>
+              <button type="button" class="key">E</button>
+              <button type="button" class="key">R</button>
+              <button type="button" class="key">T</button>
+              <button type="button" class="key">Y</button>
+              <button type="button" class="key">U</button>
+              <button type="button" class="key">I</button>
+              <button type="button" class="key">O</button>
+              <button type="button" class="key">P</button>
             </div>
 
-            <!-- Række 2 -->
-            <div class="row">
-              <button class="key">A</button>
-              <button class="key">S</button>
-              <button class="key">D</button>
-              <button class="key">F</button>
-              <button class="key">G</button>
-              <button class="key">H</button>
-              <button class="key">J</button>
-              <button class="key">K</button>
-              <button class="key">L</button>
-              <button class="key">Æ</button>
-              <button class="key">Ø</button>
+            <div class="keyboard-row">
+              <button type="button" class="key">A</button>
+              <button type="button" class="key">S</button>
+              <button type="button" class="key">D</button>
+              <button type="button" class="key">F</button>
+              <button type="button" class="key">G</button>
+              <button type="button" class="key">H</button>
+              <button type="button" class="key">J</button>
+              <button type="button" class="key">K</button>
+              <button type="button" class="key">L</button>
             </div>
 
-            <!-- Række 3 -->
-            <div class="row">
-              <button id="shift">SHIFT</button>
-              <!-- Shift-knap -->
+            <div class="keyboard-row">
+              <button type="button" id="shift">Shift</button>
 
-              <button class="key">Z</button>
-              <button class="key">X</button>
-              <button class="key">C</button>
-              <button class="key">V</button>
-              <button class="key">B</button>
-              <button class="key">N</button>
-              <button class="key">M</button>
+              <button type="button" class="key">Z</button>
+              <button type="button" class="key">X</button>
+              <button type="button" class="key">C</button>
+              <button type="button" class="key">V</button>
+              <button type="button" class="key">B</button>
+              <button type="button" class="key">N</button>
+              <button type="button" class="key">M</button>
 
-              <button class="key">-</button>
-              <button class="key">.</button>
-
-              <button id="backspace">⌫</button>
+              <button type="button" id="backspace">⌫</button>
             </div>
 
-            <!-- Række 4 - Navigation + space -->
-            <div class="row">
-              <button id="leftArrow">◀</button>
-
-              <button id="space">SPACE</button>
-
-              <button id="rightArrow">▶</button>
+            <div class="keyboard-row">
+              <button type="button" id="leftArrow">←</button>
+              <button type="button" id="space">Mellemrum</button>
+              <button type="button" id="rightArrow">→</button>
             </div>
           </div>
+
+          <button class="primary-btn" id="saveNameBtn">Start quiz</button>
         </div>
       </section>
 
-      <!-- Spørgsmålsider -->
-      <section id="questionScreen" class="question-screen">
+      <section
+        id="quizScreen"
+        class="screen quiz-screen"
+        aria-labelledby="questionTitle"
+      >
         <header class="topbar">
-          <div class="progress-container">
+          <div class="progress-wrap" aria-label="Quiz fremgang">
             <div id="progressBar" class="progress-bar"></div>
           </div>
-          <p id="questionCounter">Spørgsmål 1 af 10</p>
+          <p id="questionCounter">Spørgsmål 1/10</p>
         </header>
 
         <div class="quiz-layout">
-          <figure class="image-container">
+          <figure class="image-panel">
             <img
               id="questionImage"
-              src="/img/ovi-smile.png"
-              alt="Ovataci der smiler"
+              src=""
+              alt="Billede relateret til spørgsmålet"
             />
           </figure>
-          <article class="question-container">
+          <article class="question-panel">
             <h2 id="questionTitle">Spørgsmål</h2>
             <p id="questionText"></p>
             <div id="answers" class="answers"></div>
           </article>
-          <button class="feedback-btn" id="feedbackBtn">Se feedback</button>
         </div>
       </section>
 
-      <!-- Feedbacksider -->
-      <section id="feedbackScreen" class="feedback-screen">
+      <section
+        id="feedbackScreen"
+        class="screen feedback-screen"
+        aria-labelledby="feedbackTitle"
+      >
         <header class="topbar">
-          <div class="progress-container">
+          <div class="progress-wrap">
             <div id="feedbackProgressBar" class="progress-bar"></div>
           </div>
           <p id="feedbackCounter"></p>
         </header>
-        <div class="feedback-card">
+        <div class="feedback-layout">
           <div>
             <h2 id="feedbackTitle"></h2>
             <p id="feedbackText"></p>
             <p id="correctAnswerText" class="correct-answer"></p>
           </div>
           <figure class="feedback-image-wrap">
-            <img id="feedbackImage" src="#" alt="Feedback billede" />
+            <img id="feedbackImage" src="" alt="Feedback billede" />
           </figure>
         </div>
-        <button class="next-btn" id="nextBtn">Næste spørgsmål</button>
+        <button
+          class="next-btn"
+          id="nextBtn"
+          aria-label="Gå til næste spørgsmål"
+        >
+          ➜
+        </button>
       </section>
 
-      <!-- Scoreboard skærm -->
-      <section id="scoreScreen" class="score-screen">
+      <section
+        id="scoreScreen"
+        class="screen score-screen"
+        aria-labelledby="scoreTitle"
+      >
         <div class="score-card">
           <h2 id="scoreTitle">Scoreboard</h2>
           <p id="finalScore"></p>
           <ol id="scoreList" class="score-list"></ol>
-          <button class="restart-btn" id="restartBtn">Start quiz igen</button>
+          <button class="primary-btn" id="restartBtn">Prøv igen</button>
+          <button class="secondary-btn" id="clearScoresBtn">
+            Ryd scoreboard
+          </button>
         </div>
       </section>
     </main>
-    <script src="js/script.js"></script>
-    <script src="js/alias.js"></script>
   </body>
 </html>

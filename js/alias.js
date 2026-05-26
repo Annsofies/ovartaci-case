@@ -1,6 +1,9 @@
 "use strict";
 
-//  HTML ELEMENTER - Henter elementer fra HTML
+// ALIAS / TOUCH KEYBOARD
+// Denne fil styrer tastaturet på alias-siden.
+
+// Henter HTML-elementer
 const input = document.getElementById("nameInput");
 const keys = document.querySelectorAll(".key");
 const backspace = document.getElementById("backspace");
@@ -9,81 +12,77 @@ const shift = document.getElementById("shift");
 const leftArrow = document.getElementById("leftArrow");
 const rightArrow = document.getElementById("rightArrow");
 
-// VARIABLES / STATE - Gemmer keyboardets status
-let isUpperCase = true; // Holder styr på store/små bogstaver
-let cursorPosition = 0; // Holder styr på cursorens position i teksten
+// Gemmer keyboardets status
+let isUpperCase = true;
+let cursorPosition = 0;
 
-// SKRIV BOGSTAVER
+// Opdaterer cursor-positionen, hvis der allerede står et navn i feltet
+function updateCursorToEnd() {
+  cursorPosition = input.value.length;
+}
+
+// Indsætter tekst dér hvor cursoren står
+function insertAtCursor(text) {
+  const currentText = input.value;
+
+  // Stopper hvis alias er på max længde
+  if (currentText.length >= input.maxLength) return;
+
+  const beforeCursor = currentText.slice(0, cursorPosition);
+  const afterCursor = currentText.slice(cursorPosition);
+
+  input.value = beforeCursor + text + afterCursor;
+  cursorPosition += text.length;
+}
+
+// Bogstav-knapper
 keys.forEach((key) => {
   key.addEventListener("click", () => {
-    const letter = key.textContent; // Henter bogstavet fra knappen
-
-    insertAtCursor(letter); // Indsætter bogstavet i inputfeltet
+    insertAtCursor(key.textContent);
   });
 });
 
-//  INSERT TEKST
-function insertAtCursor(text) {
-  const currentText = input.value; // Den nuværende tekst i inputfeltet
-
-  const beforeCursor = currentText.slice(0, cursorPosition); // Tekst før cursoren
-
-  const afterCursor = currentText.slice(cursorPosition); // Tekst efter cursoren
-
-  input.value = beforeCursor + text + afterCursor; // Indsætter teksten i inputfeltet/Samler teksten igen med det nye bogstav
-
-  cursorPosition += text.length; // Flytter cursoren frem
-}
-
-//  BACKSPACE - Sletter bogstav før cursoren
+// Backspace sletter bogstavet før cursoren
 backspace.addEventListener("click", () => {
-  // Kun hvis cursor ikke er først
   if (cursorPosition > 0) {
-    const currentText = input.value; // Henter nuværende tekst
+    const currentText = input.value;
+    const beforeCursor = currentText.slice(0, cursorPosition - 1);
+    const afterCursor = currentText.slice(cursorPosition);
 
-    const beforeCursor = currentText.slice(0, cursorPosition - 1); // Tekst før det bogstav der skal slettes
-
-    const afterCursor = currentText.slice(cursorPosition); // Tekst efter cursoren
-
-    input.value = beforeCursor + afterCursor; // Samler teksten uden det slettede bogstav
-
-    cursorPosition--; // Flytter cursoren tilbage
+    input.value = beforeCursor + afterCursor;
+    cursorPosition--;
   }
 });
 
-//  SPACE - indsætter mellemrum
+// Mellemrum
 space.addEventListener("click", () => {
-  insertAtCursor(" "); // Indsætter mellemrum
+  insertAtCursor(" ");
 });
 
-//  PILE - flytter cursor-position
+// Venstre pil flytter cursoren tilbage
 leftArrow.addEventListener("click", () => {
-  // Kun hvis cursor ikke er helt til venstre
   if (cursorPosition > 0) {
     cursorPosition--;
   }
 });
 
+// Højre pil flytter cursoren frem
 rightArrow.addEventListener("click", () => {
-  // Kun hvis cursor ikke er efter sidste bogstav
   if (cursorPosition < input.value.length) {
     cursorPosition++;
   }
 });
 
-//  SHIFT - skifter mellem store/små bogstaver
+// Shift skifter mellem store og små bogstaver
 shift.addEventListener("click", () => {
-  isUpperCase = !isUpperCase; // Skifter true/false
+  isUpperCase = !isUpperCase;
 
   keys.forEach((key) => {
-    // Gennemgår alle bogstav-knapper
-
-    const current = key.textContent; // Henter nuværende tekst på knappen
-
-    if (isUpperCase) {
-      key.textContent = current.toUpperCase();
-    } else {
-      key.textContent = current.toLowerCase();
-    }
+    key.textContent = isUpperCase
+      ? key.textContent.toUpperCase()
+      : key.textContent.toLowerCase();
   });
 });
+
+// Gør funktionen tilgængelig for script.js
+window.updateAliasCursorToEnd = updateCursorToEnd;

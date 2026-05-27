@@ -50,8 +50,7 @@ body {
 .hero-card p {
   margin-top: 30px;
   font-size: 22px;
-  color: white;
-  text-shadow: 2px 2px 0 black;
+  color: rgb(0, 0, 0);
 }
 
 /* KNAPPER */
@@ -238,8 +237,24 @@ body {
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
+.answer-btn.selected {
+  background: #324754;
+  color: white;
+  border: 3px solid #324754;
+}
+
+.submit-btn {
+  margin-top: 2rem;
+  align-self: flex-end;
+}
+
+.submit-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 /* FEEDBACK */
 
 .feedback-layout {
@@ -402,7 +417,6 @@ body {
 
   padding: 50px 30px;
 }
-
 
 .hero-card {
   position: relative;

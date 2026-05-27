@@ -77,27 +77,6 @@ const questions = [
     feedback:
       "Kunsten blev en måde at udtrykke tanker, følelser, identitet og fantasi på.",
   },
-  {
-    question: "Hvilken type oplevelse giver Ovartacis kunst ofte?",
-    answers: ["Historiske fakta", "Drømme og fantasi", "Action og spænding"],
-    correctIndex: 1,
-    image:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=900&auto=format&fit=crop",
-    feedback: "Værkerne inviterer til fortolkning, fantasi og refleksion.",
-  },
-  {
-    question: "Hvad gør en interaktiv museumsoplevelse mere spændende?",
-    answers: [
-      "Lange tekstforklaringer",
-      "Ingen lyd eller animation",
-      "At man selv deltager aktivt",
-    ],
-    correctIndex: 2,
-    image:
-      "https://images.unsplash.com/photo-1524230572899-a752b3835840?q=80&w=900&auto=format&fit=crop",
-    feedback:
-      "Når brugeren deltager aktivt, bliver formidlingen mere involverende og engagerende.",
-  },
 ];
 
 const screens = {
@@ -122,6 +101,7 @@ const feedbackProgressBar = document.querySelector("#feedbackProgressBar");
 const questionText = document.querySelector("#questionText");
 const questionImage = document.querySelector("#questionImage");
 const answersContainer = document.querySelector("#answers");
+const submitAnswerBtn = document.querySelector("#submitAnswerBtn");
 const feedbackTitle = document.querySelector("#feedbackTitle");
 const feedbackText = document.querySelector("#feedbackText");
 const correctAnswerText = document.querySelector("#correctAnswerText");
@@ -150,41 +130,80 @@ function updateProgress() {
   questionCounter.textContent = `Spørgsmål ${currentQuestionIndex + 1}/${questions.length}`;
   feedbackCounter.textContent = `Spørgsmål ${currentQuestionIndex + 1}/${questions.length}`;
 }
-
 function renderQuestion() {
   const currentQuestion = questions[currentQuestionIndex];
+
   updateProgress();
+
   questionText.textContent = currentQuestion.question;
   questionImage.src = currentQuestion.image;
   feedbackImage.src = currentQuestion.image;
+
   answersContainer.innerHTML = "";
+
+  let selectedIndex = null;
+
+  submitAnswerBtn.disabled = true;
 
   currentQuestion.answers.forEach((answer, index) => {
     const button = document.createElement("button");
+
     button.className = "answer-btn";
     button.type = "button";
     button.textContent = answer;
-    button.addEventListener("click", () => handleAnswer(index));
+
+    button.addEventListener("click", () => {
+      // Fjern gammel markering
+      document.querySelectorAll(".answer-btn").forEach((btn) => {
+        btn.classList.remove("selected");
+      });
+
+      // Marker valgt svar
+      button.classList.add("selected");
+
+      selectedIndex = index;
+
+      submitAnswerBtn.disabled = false;
+    });
+
     answersContainer.appendChild(button);
   });
 
+  // Bekræft svar
+  submitAnswerBtn.onclick = () => {
+    if (selectedIndex !== null) {
+      handleAnswer(selectedIndex);
+    }
+  };
+
   showScreen("quiz");
 }
-
 function handleAnswer(selectedIndex) {
   const currentQuestion = questions[currentQuestionIndex];
+
   const isCorrect = selectedIndex === currentQuestion.correctIndex;
 
-  if (isCorrect) score += 1;
+  // Giver point hvis svaret er korrekt
+  if (isCorrect) {
+    score += 1;
+  }
 
+  // Tilføjer korrekt/forkert styling
   screens.feedback.classList.toggle("correct", isCorrect);
   screens.feedback.classList.toggle("wrong", !isCorrect);
+
+  // Feedback tekst
   feedbackTitle.textContent = isCorrect ? "Korrekt!" : "Forkert!";
+
   feedbackText.textContent = currentQuestion.feedback;
-  correctAnswerText.textContent = `Rigtigt svar: ${currentQuestion.answers[currentQuestion.correctIndex]}`;
+
+  correctAnswerText.textContent = `Rigtigt svar: ${
+    currentQuestion.answers[currentQuestion.correctIndex]
+  }`;
+
+  // Vis feedback screen
   showScreen("feedback");
 }
-
 function nextQuestion() {
   currentQuestionIndex += 1;
 

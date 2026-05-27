@@ -23,7 +23,7 @@
 
         <div class="hero-overlay">
           <div class="hero-card">
-            <h1 id="heroTitle">Hvor godt kender du Ovartaci?</h1>
+            <h1 id="heroTitle">HVOR GODT KENDER DU OVARTACI?</h1>
             <p>
               Test din viden gennem en interaktiv quiz med feedback, point og
               leaderboard.
@@ -38,13 +38,14 @@
         aria-labelledby="aliasTitle"
       >
         <div class="content-card">
-          <h2 id="aliasTitle">Indtast dit alias</h2>
+          <h2 id="aliasTitle">Indtast dit navn</h2>
+          <p id="aliasText">Dit navn bliver gemt til scoreboard</p>
 
           <input
             id="nameInput"
             type="text"
             maxlength="18"
-            placeholder="Skriv dit alias"
+            placeholder="Skriv dit navn"
             readonly
           />
           <p id="nameError" class="error" aria-live="polite"></p>
@@ -125,6 +126,16 @@
             <h2 id="questionText"></h2>
             <p id="questionTitle">Vælg det rigtige udsagn</p>
             <div id="answers" class="answers"></div>
+
+            <button
+              id="submitAnswerBtn"
+              class="next-btn submit-btn"
+              type="button"
+              disabled
+              aria-label="Bekræft svar"
+            >
+              ➜
+            </button>
           </article>
         </div>
       </section>
@@ -169,7 +180,6 @@
           <p id="finalScore"></p>
           <ol id="scoreList" class="score-list"></ol>
           <button class="primary-btn" id="restartBtn">Prøv igen</button>
-          </button>
         </div>
       </section>
     </main>

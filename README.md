@@ -5,29 +5,24 @@
 2. Hvad er projektet er udviklet i 
 3. Fokusområder
 4. W3C-validering
-5. Mappestruktur + Strukturforklaring
+5. Mappestruktur, Strukturforklaring & Kommentarer i koden
 6. Web conventions
 7. OOUX og ORCA-tabel
 8. JavaScript datastruktur
 9. Eksempel på JavaScript-kode
-
 10. Anvendelse af localStorage
 11. Dynamisk feedback
-12. Kodeeksempel – DOM manipulation
-13. Kommentarer i koden
-14. GitHub-samarbejde
-15. JavaScript-biblioteker
-16. Centrale designvalg
-17. Refleksion
-18. Konklution
+12. GitHub-samarbejde
+13. Refleksion 
+14. Konklution
 
 <br></br>
 
 ## 1. Projektbeskrivelse
-Dette projekts mål er, at skabe en interaktiv digital museumsoplevelse for Museum Ovartaci.
+Dette projekts handler om at udvikle en interaktiv digital museumsoplevelse til Museum Ovartaci. 
+Formålet med løsningen er at skabe mere engagement og aktiv deltagelse blandt museumsbesøgende gennem en digital quizoplevelse i det fysiske museumsrum.
 
-Vores løsningen består af en quizbaseret prototype, som skal engagere unge museumsbesøgende gennem aktiv deltagelse, læring og interaktion i det fysiske museumsrum.
-
+Vores løsningen består af en quizbaseret prototype, som skal engagere unge museumsbesøgende gennem aktiv deltagelse, læring og interaktion i det fysiske museumsrum. Brugeren guides gennem forskellige spørgsmål og får feedback undervejs. Brugeren skal blandt andet indtaste et alias, besvare quizspørgsmål og modtage dynamisk feedback baseret på deres valg.
 
 
 ### 2. Projektet er udviklet i:
@@ -58,6 +53,8 @@ Projektets HTML- og CSS-filer er begge valideret. Validering blev brugt løbende
 
 ## 5. Mappestruktur
 ![billede af mappestruktur](/img/mappestruktur.png)
+
+<br></br>
 
 ### Strukturforklaring
 Vi har valgt denne struktur hvor hele quizen er samlet i én ```index.html``` med flere sektioner (screens), fordi vi syndes det gør det nemmere at styre navigationen med ```js``` efterfølgende. 
@@ -94,11 +91,17 @@ Vi har valgt at opdele ```js``` i 2 filer, hvor keyboardet har fået sin egen si
 
 <br></br>
 
+### Kommentarer i koden
+Vi har lavet en del kommentar i , både ```html```, ```css``` og ```js```. Kommentarne skal hjælpe os med at forstå og huske koden bedre. Kommentarne er skrevet på dansk, da vi mente det ville give mest mening for os.
+
+
+<br></br>
+
 ## 6. Web conventions
 Projektet følger almindelige web conventions:
 * Alle filer navngives med lowercase
 * Ingen danske bogstaver (æ, ø, å)
-* camelCase og Kebab-case bruges konsekvent
+* camelCase og kebab-case bruges konsekvent
 * Mapper er organiseret
 
 <br></br>
@@ -197,3 +200,77 @@ Fordi vi har indsat noget tekst
 
 > **Hvordan påvirker koden HTML-siden? & Hvorfor er koden vigtig?**
 >* Den er vigtig fordi den opdaterer inputfeltet dynamisk og placerer bogstaver korrekt, så brugeren kan skrive et alias på skærmen med et touch keyboard uden fysisk tastatur.
+
+<br></br>
+
+## 10. Anvendelse af localStorage
+Vi har i protjektet anvendt localStorge til at gemme userens navn (alias) og dens scorre.
+
+Et eksempel vil være til at finde i vores ```script.js```:
+```
+function saveScore() {
+  const scores = JSON.parse(localStorage.getItem("ovartaciScores")) || [];
+  scores.push({
+    name: playerName,
+    score,
+    total: questions.length,
+    date: new Date().toISOString(),
+  });
+  scores.sort((a, b) => b.score - a.score);
+  localStorage.setItem("ovartaciScores", JSON.stringify(scores.slice(0, 8)));
+}
+ ```
+
+Funktionen ```saveScore()``` gemmer spillerens resultat i ```localStorage```. Først hentes de tidligere scores, hvorefter den nye score tilføjes med navn, point og dato. 
+Derefter sorteres scorerne fra højeste til laveste, og de 8 bedste resultater gemmes, så de kan vises i scoreboardet.
+
+<br></br>
+
+## 11. Dynamisk feedback
+Quizzen giver dynamisk feedback baseret på brugerens svar.
+Feedbacken vises på en Korrekt eller Forkert side efter hver spørgsmål - så man hele tiden for feedback på hvordan man klare den. 
+
+```
+function handleAnswer(selectedIndex) {
+  const currentQuestion = questions[currentQuestionIndex];
+  const isCorrect = selectedIndex === currentQuestion.correctIndex;
+
+  if (isCorrect) score += 1;
+
+  screens.feedback.classList.toggle("correct", isCorrect);
+  screens.feedback.classList.toggle("wrong", !isCorrect);
+  feedbackTitle.textContent = isCorrect ? "Korrekt!" : "Forkert!";
+  feedbackText.textContent = currentQuestion.feedback;
+  correctAnswerText.textContent = `Rigtigt svar: ${currentQuestion.answers[currentQuestion.correctIndex]}`;
+  showScreen("feedback");
+}
+```
+
+<br></br>
+
+## 12. GitHub-samarbejde
+Projektet er blevet lavet igennem GitHub-samarbejde.
+
+* Vi har begge lavedt commits løbende.
+* Har den ene haft problemer med dele af koden, har det hurtigt kunne blive løst, fordi vi har lavet mange commits undervejs, som vi har kunne gå tilbage til.
+* Vi har været gode til at dele tingende op, så vi begge har haft mulighed for at kode. 
+
+ 
+<br></br>
+
+## 13. Refleksion
+#### Hvorfor har vi valgt  quizformat?
+Vi havde mange forskællige muligheder oppe og vende, men ende med quizzen, fordi:
+* Skaber aktiv deltagelse
+* Understøtter læring gennem interaktion
+* Kan give immediate feedback
+* Passer til unge brugeres digitale vaner
+* Vi tænkte det var en udfordrende opgave, som vi begge to ikke havde prøvet at kode før
+
+Det har værert svært at kode, både fordi vi kun har værert to i gruppen med så meget viden indenfor kodning. Men også fordi det er noget vi ikke har gjordt før, så der skulle læses og forståes en del. Vi har gemt og slettet mange gange, vi har også gået tilbage til gamle commits og startet derfra igen. Det har værert udfordrende men sjovt. 
+
+<br></br>
+
+## 14. Konklution
+Vores projektet viser, hvordan en interaktiv digital løsning kan skabe mere engagement og aktiv deltagelse hos besøgende på Museum Ovartaci.
+Ved hjælp af ```html```, ```css```, ```js``` og ```localStorage``` har vi udviklet en quizbaseret prototype med dynamisk feedback og godt brugerflow. Gennem OOUX, ORCA og UX-principper har vi skabt en løsning, der kobler storytelling og læring sammen i museummet.

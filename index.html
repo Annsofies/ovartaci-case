@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hvor godt kender du Ovartaci?</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/alias.css" />
 
     <script src="js/script.js" defer></script>
     <script src="js/alias.js" defer></script>
@@ -17,6 +16,11 @@
         class="screen hero-screen active"
         aria-labelledby="heroTitle"
       >
+        <!-- Baggrundsvideo -->
+        <video class="background-video" autoplay muted loop playsinline>
+          <source src="video/ovi-video.mp4" type="video/mp4" />
+        </video>
+
         <div class="hero-overlay">
           <div class="hero-card">
             <h1 id="heroTitle">Hvor godt kender du Ovartaci?</h1>
@@ -118,8 +122,8 @@
             />
           </figure>
           <article class="question-panel">
-            <h2 id="questionTitle">Spørgsmål</h2>
-            <p id="questionText"></p>
+            <h2 id="questionText"></h2>
+            <p id="questionTitle">Vælg det rigtige udsagn</p>
             <div id="answers" class="answers"></div>
           </article>
         </div>

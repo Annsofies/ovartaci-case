@@ -371,3 +371,40 @@ body {
   --cream: #f4f0e8;
   --text: #ffffff;
 }
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* FORSIDE OVERLAY */
+
+.hero-screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  padding: 50px 30px;
+}
+
+
+.hero-card {
+  position: relative;
+  z-index: 3;
+}

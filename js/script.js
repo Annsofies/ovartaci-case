@@ -5,56 +5,11 @@ const questions = [
     question: "Hvad betyder navnet ‘Ovartaci’?",
     answers: ["Overlæge", "Overtosse", "Overkunstner"],
     correctIndex: 1,
-    image:
-      "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?q=80&w=900&auto=format&fit=crop",
+    image: "img/ovi-smile.png",
     feedback:
       "Navnet Ovartaci forbindes med ordet ‘overtosse’ og indgår som en del af kunstnerens særlige identitet og fortælling.",
   },
-  {
-    question: "Hvor mange år var Ovartaci indlagt?",
-    answers: ["12 år", "24 år", "56 år"],
-    correctIndex: 2,
-    image:
-      "https://images.unsplash.com/photo-1564399580075-5dfe19c205f3?q=80&w=900&auto=format&fit=crop",
-    feedback:
-      "Ovartaci tilbragte størstedelen af sit liv på Psykiatrisk Hospital i Risskov.",
-  },
-  {
-    question: "Hvilket tema fylder meget i Ovartacis kunst?",
-    answers: ["Sport", "Identitet", "Politik"],
-    correctIndex: 1,
-    image:
-      "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=900&auto=format&fit=crop",
-    feedback:
-      "Identitet, fantasi og menneskesind er centrale temaer i Ovartacis univers.",
-  },
-  {
-    question: "Hvilket materiale arbejdede Ovartaci ofte med?",
-    answers: ["Metal", "Glas", "Træ og papmaché"],
-    correctIndex: 2,
-    image:
-      "https://images.unsplash.com/photo-1515405295579-ba7b45403062?q=80&w=900&auto=format&fit=crop",
-    feedback:
-      "Ovartaci skabte figurer og værker med en fantasifuld brug af materialer.",
-  },
-  {
-    question: "Hvordan beskrev Ovartaci ofte sig selv?",
-    answers: ["Som konge", "Som kvinde", "Som astronaut"],
-    correctIndex: 1,
-    image:
-      "https://images.unsplash.com/photo-1554907984-15263bfd63bd?q=80&w=900&auto=format&fit=crop",
-    feedback:
-      "Køn og identitet spillede en vigtig rolle i Ovartacis selvforståelse og kunst.",
-  },
-  {
-    question: "Hvilket ord beskriver bedst Ovartacis univers?",
-    answers: ["Minimalistisk", "Teknologisk", "Fantasifuldt"],
-    correctIndex: 2,
-    image:
-      "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=900&auto=format&fit=crop",
-    feedback:
-      "Ovartacis univers opleves ofte som drømmende, særligt og fantasifuldt.",
-  },
+
   {
     question: "Hvor skabte Ovartaci størstedelen af sin kunst?",
     answers: [
@@ -68,6 +23,48 @@ const questions = [
     feedback:
       "Hospitalet i Risskov blev rammen om en stor del af Ovartacis kunstneriske produktion.",
   },
+
+  {
+    question: "Hvor mange år var Ovartaci indlagt på Psykiatrisk Hospital?",
+    answers: ["12 år", "24 år", "56 år"],
+    correctIndex: 2,
+    image: "img/hospital.png",
+    feedback:
+      "Ovartaci tilbragte størstedelen af sit liv på Psykiatrisk Hospital i Risskov.",
+  },
+  {
+    question: "Hvilket tema fylder meget i Ovartacis kunst?",
+    answers: ["Sport", "Identitet", "Politik"],
+    correctIndex: 1,
+    image: "img/ovi-hehe.png",
+    feedback:
+      "Identitet, fantasi og menneskesind er centrale temaer i Ovartacis univers.",
+  },
+  {
+    question: "Hvilket materiale arbejdede Ovartaci ofte med?",
+    answers: ["Metal", "Glas", "Træ og papmaché"],
+    correctIndex: 2,
+    image: "img/dukker.png",
+    feedback:
+      "Ovartaci skabte figurer og værker med en fantasifuld brug af materialer.",
+  },
+  {
+    question: "Hvordan beskrev Ovartaci ofte sig selv?",
+    answers: ["Som konge", "Som kvinde", "Som astronaut"],
+    correctIndex: 1,
+    image: "img/kvinde.png",
+    feedback:
+      "Køn og identitet spillede en vigtig rolle i Ovartacis selvforståelse og kunst.",
+  },
+  {
+    question: "Hvilket ord beskriver bedst Ovartacis univers?",
+    answers: ["Minimalistisk", "Teknologisk", "Fantasifuldt"],
+    correctIndex: 2,
+    image:
+      "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=900&auto=format&fit=crop",
+    feedback:
+      "Ovartacis univers opleves ofte som drømmende, særligt og fantasifuldt.",
+  },
   {
     question: "Hvad var vigtigt for Ovartaci gennem kunsten?",
     answers: [
@@ -76,8 +73,7 @@ const questions = [
       "At udtrykke sit indre univers",
     ],
     correctIndex: 2,
-    image:
-      "https://images.unsplash.com/photo-1518998053901-5348d3961a04?q=80&w=900&auto=format&fit=crop",
+    image: "img/ovi-hehe.png",
     feedback:
       "Kunsten blev en måde at udtrykke tanker, følelser, identitet og fantasi på.",
   },

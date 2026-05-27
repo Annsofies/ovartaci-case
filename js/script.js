@@ -229,13 +229,16 @@ function startNewQuiz() {
 }
 
 startBtn.addEventListener("click", () => {
-  nameInput.value = playerName;
+  if (window.resetAliasForm) {
+    window.resetAliasForm();
+  }
+
+  playerName = "";
+  localStorage.removeItem("ovartaciPlayerName");
+
+  nameError.textContent = "";
   showScreen("alias");
   nameInput.focus();
-
-  if (window.updateAliasCursorToEnd) {
-    window.updateAliasCursorToEnd();
-  }
 });
 
 saveNameBtn.addEventListener("click", () => {
@@ -248,19 +251,28 @@ saveNameBtn.addEventListener("click", () => {
 
   nameError.textContent = "";
   playerName = name;
+
   localStorage.setItem("ovartaciPlayerName", playerName);
+
   startNewQuiz();
 });
 
 nameInput.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") saveNameBtn.click();
+  if (event.key === "Enter") {
+    saveNameBtn.click();
+  }
 });
 
 nextBtn.addEventListener("click", nextQuestion);
+
 restartBtn.addEventListener("click", () => {
+  if (window.resetAliasForm) {
+    window.resetAliasForm();
+  }
+
+  playerName = "";
+  localStorage.removeItem("ovartaciPlayerName");
+
+  nameError.textContent = "";
   showScreen("start");
-});
-clearScoresBtn.addEventListener("click", () => {
-  localStorage.removeItem("ovartaciScores");
-  renderScoreboard();
 });

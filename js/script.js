@@ -2,82 +2,121 @@
 
 const questions = [
   {
-    question: "Hvad betyder navnet ‘Ovartaci’?",
+    question: "Hvad betyder navnet “Ovartaci”?",
     answers: ["Overlæge", "Overtosse", "Overkunstner"],
     correctIndex: 1,
-    image: "img/ovi-smile.png",
+    image: "",
     feedback:
-      "Navnet Ovartaci forbindes med ordet ‘overtosse’ og indgår som en del af kunstnerens særlige identitet og fortælling.",
+      "Navnet Ovartaci forbindes med ordet “overtosse” og blev en vigtig del af kunstnerens identitet og særlige univers.",
   },
 
   {
     question: "Hvor skabte Ovartaci størstedelen af sin kunst?",
     answers: [
-      "På kunstakademiet",
-      "I Paris",
-      "På psykiatrisk hospital i Risskov",
+      "På kunstakademiet i København",
+      "På Psykiatrisk Hospital i Risskov",
+      "På et museum i Paris",
     ],
-    correctIndex: 2,
-    image:
-      "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?q=80&w=900&auto=format&fit=crop",
+    correctIndex: 1,
+    image: "",
     feedback:
-      "Hospitalet i Risskov blev rammen om en stor del af Ovartacis kunstneriske produktion.",
+      "På Psykiatrisk Hospital i Risskov skabte Ovartaci størstedelen af sine værker og udviklede sit særlige kunstneriske univers.",
   },
 
   {
-    question: "Hvor mange år var Ovartaci indlagt på Psykiatrisk Hospital?",
+    question:
+      "Hvor længe var Ovartaci indlagt på Psykiatrisk Hospital i Risskov?",
     answers: ["12 år", "24 år", "56 år"],
     correctIndex: 2,
-    image: "img/hospital.png",
+    image: "",
     feedback:
-      "Ovartaci tilbragte størstedelen af sit liv på Psykiatrisk Hospital i Risskov.",
+      "Ovartaci tilbragte størstedelen af sit liv på Psykiatrisk Hospital i Risskov, hvor han både boede og arbejdede med sin kunst.",
   },
+
+  {
+    question:
+      "Hvad arbejdede Louis Marcussen som, før han blev kendt som Ovartaci?",
+    answers: ["Bygningsmaler", "Læge", "Sømand"],
+    correctIndex: 0,
+    image: "",
+    feedback:
+      "Før han blev kendt som Ovartaci, arbejdede Louis Marcussen med maling og dekoration som bygningsmaler.",
+  },
+
   {
     question: "Hvilket tema fylder meget i Ovartacis kunst?",
     answers: ["Sport", "Identitet", "Politik"],
     correctIndex: 1,
-    image: "img/ovi-hehe.png",
+    image: "",
     feedback:
-      "Identitet, fantasi og menneskesind er centrale temaer i Ovartacis univers.",
+      "Identitet, fantasi og menneskesind er centrale temaer i Ovartacis kunst og fortællinger.",
   },
+
   {
-    question: "Hvilket materiale arbejdede Ovartaci ofte med?",
-    answers: ["Metal", "Glas", "Træ og papmaché"],
-    correctIndex: 2,
-    image: "img/dukker.png",
-    feedback:
-      "Ovartaci skabte figurer og værker med en fantasifuld brug af materialer.",
-  },
-  {
-    question: "Hvordan beskrev Ovartaci ofte sig selv?",
-    answers: ["Som konge", "Som kvinde", "Som astronaut"],
-    correctIndex: 1,
-    image: "img/kvinde.png",
-    feedback:
-      "Køn og identitet spillede en vigtig rolle i Ovartacis selvforståelse og kunst.",
-  },
-  {
-    question: "Hvilket ord beskriver bedst Ovartacis univers?",
-    answers: ["Minimalistisk", "Teknologisk", "Fantasifuldt"],
-    correctIndex: 2,
-    image:
-      "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=900&auto=format&fit=crop",
-    feedback:
-      "Ovartacis univers opleves ofte som drømmende, særligt og fantasifuldt.",
-  },
-  {
-    question: "Hvad var vigtigt for Ovartaci gennem kunsten?",
+    question:
+      "Hvorfor lavede Ovartaci hængedukker i stedet for at male direkte på væggene?",
     answers: [
-      "At blive rig",
-      "At male realistisk",
-      "At udtrykke sit indre univers",
+      "Fordi han ikke måtte male direkte på væggene",
+      "Fordi han ikke kunne lide maling",
+      "Fordi væggene var for små",
     ],
-    correctIndex: 2,
-    image: "img/ovi-hehe.png",
+    correctIndex: 0,
+    image: "",
     feedback:
-      "Kunsten blev en måde at udtrykke tanker, følelser, identitet og fantasi på.",
+      "Derfor fandt Ovartaci en kreativ løsning ved at lave bevægelige papirdukker, som kunne hænges op i rummet.",
+  },
+
+  {
+    question: "Hvordan blev Ovartacis “rygefantomer” brugt?",
+    answers: ["Som legetøj", "Til at ryge gennem", "Som lamper"],
+    correctIndex: 1,
+    image: "",
+    feedback:
+      "Tobakken blev placeret i figurens hoved, mens røgen blev suget gennem benene og fødderne.",
+  },
+
+  {
+    question: "Hvad drømte Ovartaci om at bygge?",
+    answers: ["En helikopter", "Et slot", "En ubåd"],
+    correctIndex: 0,
+    image: "",
+    feedback:
+      "Ovartaci byggede en helikopter i fuld størrelse, men den kom aldrig til at flyve. Projektet viser hans store fantasi og fascination af teknik og frihed.",
+  },
+
+  {
+    question: "Hvad blev et vigtigt symbol på frihed for Ovartaci?",
+    answers: ["En cykel", "Et tog", "En båd"],
+    correctIndex: 0,
+    image: "",
+    feedback:
+      "At kunne cykle rundt gav Ovartaci en følelse af frihed og selvstændighed.",
+  },
+
+  {
+    question:
+      "I 1954 amputerede Ovartaci sin penis. Hvad gjorde han efter amputationen?",
+    answers: [
+      "Han gemte den i en kasse",
+      "Han dyppede den i rød maling og smed den væk",
+      "Han afleverede den til lægerne",
+    ],
+    correctIndex: 1,
+    image: "",
+    feedback:
+      "Ovartaci dyppede den i rød maling for at sikre, at lægerne ikke kunne sy den på igen. Episoden viser, hvor stærkt han ønskede fysisk og psykisk forvandling.",
+  },
+
+  {
+    question: "Hvad ønskede Ovartaci især at udtrykke gennem sin kunst?",
+    answers: ["At blive berømt", "At male realistisk", "Sit indre univers"],
+    correctIndex: 2,
+    image: "",
+    feedback:
+      "Kunsten blev en måde for Ovartaci at udtrykke tanker, følelser, fantasi og identitet på.",
   },
 ];
+
 
 const screens = {
   start: document.querySelector("#startScreen"),

@@ -361,3 +361,12 @@ restartBtn.addEventListener("click", () => {
   nameError.textContent = "";
   showScreen("start");
 });
+
+const backgroundVideo = document.querySelector(".background-video");
+
+backgroundVideo.addEventListener("ended", () => {
+  setTimeout(() => {
+    backgroundVideo.currentTime = 0;
+    backgroundVideo.play();
+  }, 6000);
+});

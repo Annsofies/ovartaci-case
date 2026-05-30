@@ -25,10 +25,16 @@
           <div class="hero-card">
             <h1 id="heroTitle">HVOR GODT KENDER DU OVARTACI?</h1>
             <p>
-              Test din viden gennem en interaktiv quiz med feedback, point og
-              leaderboard.
+              Træd ind i Ovartacis univers. Svar på spørgsmål og opdag
+              fortællinger om identitet, fantasi og forvandling.
             </p>
-            <button class="primary-btn" id="startBtn">Start quiz</button>
+            <div class="hero-steps" aria-label="Sådan fungerer oplevelsen">
+              <span>01 Vælg alias</span>
+              <span>02 Quizoplevelse</span>
+              <span>03 Se din placering</span>
+            </div>
+
+            <button class="primary-btn" id="startBtn">Start oplevelsen</button>
           </div>
         </div>
       </section>
@@ -38,8 +44,11 @@
         aria-labelledby="aliasTitle"
       >
         <div class="content-card">
-          <h2 id="aliasTitle">Indtast dit navn</h2>
-          <p id="aliasText">Dit navn bliver gemt til scoreboard</p>
+          <p class="overtitel">Før du træder ind</p>
+          <h2 id="aliasTitle">Indtast dit alias</h2>
+          <p id="aliasText">
+            Dit alias bruges kun til scoreboardet på denne skærm.
+          </p>
 
           <input
             id="nameInput"
@@ -111,7 +120,7 @@
           <div class="progress-wrap" aria-label="Quiz fremgang">
             <div id="progressBar" class="progress-bar"></div>
           </div>
-          <p id="questionCounter">Spørgsmål 1/10</p>
+          <p id="questionCounter">Spørgsmål 1/11</p>
         </header>
 
         <div class="quiz-layout">
@@ -154,8 +163,9 @@
         <div class="feedback-layout">
           <div>
             <h2 id="feedbackTitle"></h2>
-            <p id="feedbackText"></p>
             <p id="correctAnswerText" class="correct-answer"></p>
+            <p id="feedbackText"></p>
+            <p id="reflectionText" class="reflection-text"></p>
           </div>
           <figure class="feedback-image-wrap">
             <img id="feedbackImage" src="" alt="Feedback billede" />
@@ -176,6 +186,7 @@
         aria-labelledby="scoreTitle"
       >
         <div class="score-card">
+          <p class="overtitel">Din rejse er slut</p>
           <h2 id="scoreTitle">Scoreboard</h2>
           <p id="finalScore"></p>
           <ol id="scoreList" class="score-list"></ol>

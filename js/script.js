@@ -2,15 +2,18 @@
 
 const questions = [
   {
+    chapter: "Identitet",
     question: "Hvad betyder navnet “Ovartaci”?",
     answers: ["Overlæge", "Overtosse", "Overkunstner"],
     correctIndex: 1,
-    image: "",
+    image: "img/ovi-hehe.png",
     feedback:
       "Navnet Ovartaci forbindes med ordet “overtosse” og blev en vigtig del af kunstnerens identitet og særlige univers.",
+    reflection: "Hvordan tror du et navn kan påvirke et menneskes identitet?",
   },
 
   {
+    chapter: "Stedet",
     question: "Hvor skabte Ovartaci størstedelen af sin kunst?",
     answers: [
       "På kunstakademiet i København",
@@ -18,41 +21,51 @@ const questions = [
       "På et museum i Paris",
     ],
     correctIndex: 1,
-    image: "",
+    image: "img/risskovhospital.png",
     feedback:
       "På Psykiatrisk Hospital i Risskov skabte Ovartaci størstedelen af sine værker og udviklede sit særlige kunstneriske univers.",
+    reflection: "Hvordan tror du omgivelser påvirker et menneskes kreativitet?",
   },
 
   {
+    chapter: "Livsfortælling",
     question:
       "Hvor længe var Ovartaci indlagt på Psykiatrisk Hospital i Risskov?",
     answers: ["12 år", "24 år", "56 år"],
     correctIndex: 2,
-    image: "",
+    image: "img/kvinde.png",
     feedback:
       "Ovartaci tilbragte størstedelen af sit liv på Psykiatrisk Hospital i Risskov, hvor han både boede og arbejdede med sin kunst.",
+    reflection:
+      "Hvordan tror du det påvirker et menneske at opholde sig samme sted i mange år?",
   },
 
   {
+    chapter: "Håndværk",
     question:
       "Hvad arbejdede Louis Marcussen som, før han blev kendt som Ovartaci?",
-    answers: ["Bygningsmaler", "Læge", "Sømand"],
+    answers: ["Bygningsmaler", "Håndværker", "Sømand"],
     correctIndex: 0,
-    image: "",
+    image: "img/ovi-smile.png",
     feedback:
       "Før han blev kendt som Ovartaci, arbejdede Louis Marcussen med maling og dekoration som bygningsmaler.",
+    reflection:
+      "Hvordan kan tidligere erfaringer påvirke den kunst, man skaber?",
   },
 
   {
+    chapter: "Indre univers",
     question: "Hvilket tema fylder meget i Ovartacis kunst?",
     answers: ["Sport", "Identitet", "Politik"],
     correctIndex: 1,
-    image: "",
+    image: "img/identitet.png",
     feedback:
       "Identitet, fantasi og menneskesind er centrale temaer i Ovartacis kunst og fortællinger.",
+    reflection: "Hvordan kan kunst vise tanker og følelser uden ord?",
   },
 
   {
+    chapter: "Rum og regler",
     question:
       "Hvorfor lavede Ovartaci hængedukker i stedet for at male direkte på væggene?",
     answers: [
@@ -61,39 +74,48 @@ const questions = [
       "Fordi væggene var for små",
     ],
     correctIndex: 0,
-    image: "",
+    image: "img/dukke.png",
     feedback:
       "Derfor fandt Ovartaci en kreativ løsning ved at lave bevægelige papirdukker, som kunne hænges op i rummet.",
+    reflection: "Kan begrænsninger nogle gange føre til nye kreative idéer?",
   },
 
   {
+    chapter: "Objekter",
     question: "Hvordan blev Ovartacis “rygefantomer” brugt?",
     answers: ["Som legetøj", "Til at ryge gennem", "Som lamper"],
     correctIndex: 1,
-    image: "",
+    image: "img/rygefantomer.png",
     feedback:
       "Tobakken blev placeret i figurens hoved, mens røgen blev suget gennem benene og fødderne.",
+    reflection:
+      "Hvordan kan almindelige objekter få nye betydninger gennem fantasi?",
   },
 
   {
+    chapter: "Frihed",
     question: "Hvad drømte Ovartaci om at bygge?",
     answers: ["En helikopter", "Et slot", "En ubåd"],
     correctIndex: 0,
-    image: "",
+    image: "img/ovi-og-figur.png",
     feedback:
       "Ovartaci byggede en helikopter i fuld størrelse, men den kom aldrig til at flyve. Projektet viser hans store fantasi og fascination af teknik og frihed.",
+    reflection: "Hvad tror du drømmen om at flyve symboliserede for Ovartaci?",
   },
 
   {
+    chapter: "Bevægelse",
     question: "Hvad blev et vigtigt symbol på frihed for Ovartaci?",
     answers: ["En cykel", "Et tog", "En båd"],
     correctIndex: 0,
-    image: "",
+    image: "img/hospital.png",
     feedback:
       "At kunne cykle rundt gav Ovartaci en følelse af frihed og selvstændighed.",
+    reflection: "Hvorfor tror du bevægelse kan føles som frihed?",
   },
 
   {
+    chapter: "Transformation",
     question:
       "I 1954 amputerede Ovartaci sin penis. Hvad gjorde han efter amputationen?",
     answers: [
@@ -102,21 +124,24 @@ const questions = [
       "Han afleverede den til lægerne",
     ],
     correctIndex: 1,
-    image: "",
+    image: "img/amputation.png",
     feedback:
       "Ovartaci dyppede den i rød maling for at sikre, at lægerne ikke kunne sy den på igen. Episoden viser, hvor stærkt han ønskede fysisk og psykisk forvandling.",
+    reflection:
+      "Hvordan tror du kroppen kan hænge sammen med identitet og selvopfattelse?",
   },
 
   {
+    chapter: "Kunst og fortælling",
     question: "Hvad ønskede Ovartaci især at udtrykke gennem sin kunst?",
     answers: ["At blive berømt", "At male realistisk", "Sit indre univers"],
     correctIndex: 2,
-    image: "",
+    image: "img/ovi-og-figur.png",
     feedback:
       "Kunsten blev en måde for Ovartaci at udtrykke tanker, følelser, fantasi og identitet på.",
+    reflection: "Hvad kan kunst fortælle, som ord nogle gange ikke kan?",
   },
 ];
-
 
 const screens = {
   start: document.querySelector("#startScreen"),
@@ -130,7 +155,6 @@ const startBtn = document.querySelector("#startBtn");
 const saveNameBtn = document.querySelector("#saveNameBtn");
 const nextBtn = document.querySelector("#nextBtn");
 const restartBtn = document.querySelector("#restartBtn");
-const clearScoresBtn = document.querySelector("#clearScoresBtn");
 const nameInput = document.querySelector("#nameInput");
 const nameError = document.querySelector("#nameError");
 const questionCounter = document.querySelector("#questionCounter");
@@ -145,6 +169,7 @@ const feedbackTitle = document.querySelector("#feedbackTitle");
 const feedbackText = document.querySelector("#feedbackText");
 const correctAnswerText = document.querySelector("#correctAnswerText");
 const feedbackImage = document.querySelector("#feedbackImage");
+const reflectionText = document.querySelector("#reflectionText");
 const finalScore = document.querySelector("#finalScore");
 const scoreList = document.querySelector("#scoreList");
 
@@ -239,6 +264,8 @@ function handleAnswer(selectedIndex) {
   correctAnswerText.textContent = `Rigtigt svar: ${
     currentQuestion.answers[currentQuestion.correctIndex]
   }`;
+
+  reflectionText.textContent = currentQuestion.reflection;
 
   // Vis feedback screen
   showScreen("feedback");
